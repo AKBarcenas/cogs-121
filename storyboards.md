@@ -18,9 +18,8 @@ TritonPark Storyboard:
 1. Finding available parking on campus
 ![Storyboard 1 for parking finder](./storyboards/sanjeev_park.jpg "Finding parking on campus")
 
-
-
-
-
-
-
+Food Place Locater Chatbot Storyboards:
+1. Finding new food places to visit in an unknown area
+![Storyboard 1 for food chat bot](./storyboards/alex_food1.jpg "Finding new food places to visit in an unknown area")
+2. Finding a food place for a group that meets everyones needs
+![Storyboard 2 for food chat bot](./storyboards/alex_food2.jpg "Finding a food place for a group that meets everyones needs")
