@@ -1,14 +1,14 @@
 # MapEats
 
-**What is MapEats?**
+### What is MapEats?
 MapEats is an intelligent, cloud based bot that quickly and accurately finds
 nearby restaurants tailored to the users pereferences and needs!
 
-**Storyboard**
+### Storyboard
 Getting hassle-free, tailored recommendations for the best nearby restaurants
 ![Storyboard](./storyboards/final_storyboard.jpg "Finding nearby restaurant recommendations")
 
-**How did we decide on MapEats?**
+### How did we decide on MapEats?
 We generally received positive feedback for our storyboards, but many people
 felt that our other ideas had already been tried before (event finder, parking
 locator), or that we did not solve problems differently from current solutions.
@@ -23,7 +23,7 @@ focus to the geographic/map-based aspect of the app. Due to the positive
 reactions and suggestions for improvement that we received for this idea, we
 decided to pursue MapEats as our project.
 
-**Proposed features**
+### Proposed features
 The main feature that MapEats will implement is an intelligent chatbot that the
 user can interact with in order to find a nearby location that fits their
 current culinary desires. Our goal is for the user to be able to interact with
@@ -38,7 +38,7 @@ with the bot). Here are some other features that we would like to include:
   - Find the best restaurant for multiple people based on their wants/locations
   - Randomly select a restaurant for when a user is feeling lucky!
 
-**Splitting up the work**
+### Splitting up the work
 We are a diverse team with a broad set of experiences! Here is how we plan
 on splitting up the work:
 
