@@ -30,7 +30,16 @@ angular.module('gservice', [])
             selectedLong = longitude;
             initialize(latitude, longitude);
             // Perform an AJAX call to get all of the records in the db.
-            
+
+            //TODO this will be our record of restaurants
+            $http.get('/users').then(function(response){
+
+                // Convert the results into Google Map Format
+                locations = convertToMapPoints(response);
+
+                // Then initialize the map.
+                initialize(latitude, longitude);
+            },function(){});
         };
 
 
@@ -45,10 +54,139 @@ var initialize = function(latitude, longitude) {
 
         // Create a new map and place in the index.html page
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 3,
+            //TODO change based on restaurant locality to user
+            zoom: 15,
             center: myLatLng
         });
     }
+
+    // temp pre-populated restaurants for milestone 5
+    // TODO remove this
+    var temp_restaurants = [
+      {
+         latlon: new google.maps.LatLng(32.879227, -117.242502),
+         message: new google.maps.InfoWindow({
+            content: '<p><b>Pines</b>' +
+                     '<br><b>Hours:</b> 7 AM - 9 PM' +
+                     '<br><b>Type:</b> Dining Hall' +
+                     '<br>***PICTURES GO HERE***' +
+                     '<br>***REVIEWS GO HERE***' +
+                     '<br><button type="button">Go Here!</button>' +
+                     '</p>',
+            maxWidth: 320
+         })
+      },
+      {
+         latlon: new google.maps.LatLng(32.8839368, -117.2333183),
+         message: new google.maps.InfoWindow({
+            content: '<p><b>Canyon Vista</b>' +
+                     '<br><b>Hours:</b> 7 AM - 9 PM' +
+                     '<br><b>Type:</b> Dining Hall' +
+                     '<br>***PICTURES GO HERE***' +
+                     '<br>***REVIEWS GO HERE***' +
+                     '<br><button type="button">Go Here!</button>' +
+                     '</p>',
+            maxWidth: 320
+         })
+      },
+      {
+         latlon: new google.maps.LatLng(32.8788119, -117.2304304),
+         message: new google.maps.InfoWindow({
+            content: '<p><b>Foodworx</b>' +
+                     '<br><b>Hours:</b> 7 AM - 9 PM' +
+                     '<br><b>Type:</b> Dining Hall' +
+                     '<br>***PICTURES GO HERE***' +
+                     '<br>***REVIEWS GO HERE***' +
+                     '<br><button type="button">Go Here!</button>' +
+                     '</p>',
+            maxWidth: 320
+         })
+      },
+      {
+         latlon: new google.maps.LatLng(32.8747459, -117.2420341),
+         message: new google.maps.InfoWindow({
+            content: '<p><b>64 Degrees</b>' +
+                     '<br><b>Hours:</b> 7 AM - 9 PM' +
+                     '<br><b>Type:</b> Dining Hall' +
+                     '<br>***PICTURES GO HERE***' +
+                     '<br>***REVIEWS GO HERE***' +
+                     '<br><button type="button">Go Here!</button>' +
+                     '</p>',
+            maxWidth: 320
+         })
+      },
+      {
+         latlon: new google.maps.LatLng(32.8832115, -117.2426718),
+         message: new google.maps.InfoWindow({
+            content: '<p><b>Oceanview Terrace</b>' +
+                     '<br><b>Hours:</b> 7 AM - 9 PM' +
+                     '<br><b>Type:</b> Dining Hall' +
+                     '<br>***PICTURES GO HERE***' +
+                     '<br>***REVIEWS GO HERE***' +
+                     '<br><button type="button">Go Here!</button>' +
+                     '</p>',
+            maxWidth: 320
+         })
+      },
+      {
+         latlon: new google.maps.LatLng(32.886377, -117.24303),
+         message: new google.maps.InfoWindow({
+            content: '<p><b>Cafe Ventanas</b>' +
+                     '<br><b>Hours:</b> 7 AM - 9 PM' +
+                     '<br><b>Type:</b> Dining Hall' +
+                     '<br>***PICTURES GO HERE***' +
+                     '<br>***REVIEWS GO HERE***' +
+                     '<br><button type="button">Go Here!</button>' +
+                     '</p>',
+            maxWidth: 320
+         })
+      },
+      {
+         latlon: new google.maps.LatLng(32.882915, -117.2403442),
+         message: new google.maps.InfoWindow({
+            content: '<p><b>Goody\'s Place and Market</b>' +
+                     '<br><b>Hours:</b> 7 AM - 10 PM' +
+                     '<br><b>Type:</b> Mexican / Fast Food' +
+                     '<br>***PICTURES GO HERE***' +
+                     '<br>***REVIEWS GO HERE***' +
+                     '<br><button type="button">Go Here!</button>' +
+                     '</p>',
+            maxWidth: 320
+         })
+      },
+      {
+         latlon: new google.maps.LatLng(32.887978, -117.242072),
+         message: new google.maps.InfoWindow({
+            content: '<p><b>The Bistro</b>' +
+                     '<br><b>Hours:</b> 12 PM - 8 PM' +
+                     '<br><b>Type:</b> Fine Dining' +
+                     '<br>***PICTURES GO HERE***' +
+                     '<br>***REVIEWS GO HERE***' +
+                     '<br><button type="button">Go Here!</button>' +
+                     '</p>',
+            maxWidth: 320
+         })
+      }
+    ];
+    
+    // Loop through each location in the array and place a marker
+    // TODO REMOVE THIS
+    temp_restaurants.forEach(function(n, i){
+        var marker = new google.maps.Marker({
+            position: n.latlon,
+            map: map,
+            title: "Big Map",
+            icon: "http://maps.google.com/mapfiles/ms/icons/restaurant.png",
+        });
+
+        // For each marker created, add a listener that checks for clicks
+        google.maps.event.addListener(marker, 'click', function(e){
+
+            // When clicked, open the selected marker's message
+            currentSelectedMarker = n;
+            n.message.open(map, marker);
+        });
+    });
 
     // Loop through each location in the array and place a marker
     locations.forEach(function(n, i){
@@ -72,9 +210,9 @@ var initialize = function(latitude, longitude) {
     var initialLocation = new google.maps.LatLng(latitude, longitude);
     var marker = new google.maps.Marker({
         position: initialLocation,
-        animation: google.maps.Animation.BOUNCE,
+        //animation: google.maps.Animation.BOUNCE,
         map: map,
-        icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+        icon: 'http://maps.google.com/mapfiles/arrow.png'
     });
     lastMarker = marker;
     bigMap=map
