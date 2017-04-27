@@ -9,7 +9,7 @@ angular.module('gservice', [])
         // -------------------------------------------------------------
         // Service our factory will return
         var googleMapService = {};
-
+        var bigMap;
         // Array of locations obtained from API calls
         var locations = [];
 
@@ -28,54 +28,11 @@ angular.module('gservice', [])
             // Set the selected lat and long equal to the ones provided on the refresh() call
             selectedLat = latitude;
             selectedLong = longitude;
-
+            initialize(latitude, longitude);
             // Perform an AJAX call to get all of the records in the db.
-            $http.get('/users').then(function(response){
-
-                // Convert the results into Google Map Format
-                locations = convertToMapPoints(response);
-
-                // Then initialize the map.
-                initialize(latitude, longitude);
-            },function(){});
+            
         };
 
-        // Private Inner Functions
-        // --------------------------------------------------------------
-        // Convert a JSON of users into map points
-        var convertToMapPoints = function(response){
-
-            // Clear the locations holder
-            var locations = [];
-
-            // Loop through all of the JSON entries provided in the response
-            for(var i= 0; i < response.length; i++) {
-                var user = response[i];
-
-                // Create popup windows for each record
-                var  contentString =
-                    '<p><b>Username</b>: ' + user.username +
-                    '<br><b>Age</b>: ' + user.age +
-                    '<br><b>Gender</b>: ' + user.gender +
-                    '<br><b>Favorite Language</b>: ' + user.favlang +
-                    '</p>';
-
-                // Converts each of the JSON records into Google Maps Location format (Note [Lat, Lng] format).
-                locations.push({
-                    latlon: new google.maps.LatLng(user.location[1], user.location[0]),
-                    message: new google.maps.InfoWindow({
-                        content: contentString,
-                        maxWidth: 320
-                    }),
-                    username: user.username,
-                    gender: user.gender,
-                    age: user.age,
-                    favlang: user.favlang
-            });
-        }
-        // location is now an array populated with records in Google Maps format
-        return locations;
-    };
 
 // Initializes the map
 var initialize = function(latitude, longitude) {
@@ -120,9 +77,35 @@ var initialize = function(latitude, longitude) {
         icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
     });
     lastMarker = marker;
-
+    bigMap=map
 };
+googleMapService.createMarker= function(latitude, longitude,MarkerArray){
+    var myLatLng = {lat: selectedLat, lng: selectedLong};
+    if (!bigMap){
+        console.log("NO MAP FOUND");
+        // Create a new map and place in the index.html page
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 3,
+            center: myLatLng
+        });
+    }
 
+    var initialLocation = new google.maps.LatLng(latitude, longitude);
+
+    var marker = new google.maps.Marker({
+        position: initialLocation,
+        map: bigMap,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+    });
+    MarkerArray.push(marker);
+    renderMarkers(MarkerArray);
+};
+var renderMarkers=function(MarkerArray){
+
+    angular.forEach(MarkerArray,function(value,key){
+        
+    });
+};
 // Refresh the page upon window load. Use the initial latitude and longitude
 google.maps.event.addDomListener(window, 'load',
     googleMapService.refresh(selectedLat, selectedLong));
