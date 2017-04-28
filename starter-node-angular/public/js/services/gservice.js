@@ -29,12 +29,21 @@ angular.module('gservice', [])
             selectedLat = latitude;
             selectedLong = longitude;
 
+            var req = {
+                url: '/yelp',
+                params: {
+                    'food' : 'mexican',
+                    'longitude': longitude,
+                    'latitude' : latitude
+                },
+                dataType: 'json',
+                method: 'GET'
+            }
+
             // Perform an AJAX call to get all of the records in the db.
             //TODO this will be our record of restaurants
-            $http.get('/users').then(function(response){
-
-                // Convert the results into Google Map Format
-                locations = convertToMapPoints(response);
+            $http(req).then(function(response){
+                console.log(response);
 
                 // Then initialize the map.
                 initialize(latitude, longitude);
