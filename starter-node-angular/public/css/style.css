@@ -94,6 +94,39 @@ Section Text:       15px/1.7 "Open Sans", arial, sans-serif;
 
 -------------------------------------------------------------------*/
 
+/* ==============================
+   Custom styles
+   ============================== */
+#messages   {list-style-type: none; 
+    margin: 0;
+    padding-bottom: 20px; 
+    padding-left: 0px;
+    height: 400px;
+    }
+#messages li {background: rgb(15,133,237); 
+    padding: 5px 10px;
+    max-width: 280px;
+    float: right;
+    clear: both;
+    color: white;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 16px;
+    display: block;    
+    }
+#messages li:nth-child(odd) {
+    padding: 5px 10px;
+    float: left;
+    clear: both;    
+    background: rgb(230,230,230);   
+    color: black;
+    max-width: 280px;
+    border-radius: 5px; 
+    margin-top: 5px;
+    font-size: 16px;
+    display: block;    
+
+    }   
 
 /* ==============================
    Common styles
