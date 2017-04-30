@@ -29,24 +29,41 @@ angular.module('gservice', [])
             selectedLat = latitude;
             selectedLong = longitude;
 
-            var req = {
-                url: '/yelp',
+            var msg = 'I want some mexican food boi';
+
+            var ai = {
+                url: '/bot',
                 params: {
-                    'food' : 'mexican',
-                    'longitude': longitude,
-                    'latitude' : latitude
+                  'message': msg,
                 },
                 dataType: 'json',
                 method: 'GET'
             }
 
-            // Perform an AJAX call to get all of the records in the db.
-            //TODO this will be our record of restaurants
-            $http(req).then(function(response){
+            $http(ai).then(function(response){
                 console.log(response);
+                intentHashtable = response.entities;
+                messageContent = intentHashtable["food"][0]["value"];
 
-                // Then initialize the map.
-                initialize(latitude, longitude);
+                var req = {
+                    url: '/yelp',
+                    params: {
+                        'food' : messageContent,
+                        'longitude': longitude,
+                        'latitude' : latitude
+                    },
+                    dataType: 'json',
+                    method: 'GET'
+                }
+
+                // Perform an AJAX call to get all of the records in the db.
+                //TODO this will be our record of restaurants
+                $http(req).then(function(response1){
+                    console.log(response1);
+
+                    // Then initialize the map.
+                    initialize(latitude, longitude);
+                },function(){});
             },function(){});
         };
 
