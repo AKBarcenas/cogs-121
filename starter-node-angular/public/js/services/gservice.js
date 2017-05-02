@@ -71,7 +71,7 @@ var initialize = function(latitude, longitude) {
                      '<br><b>Type:</b> Dining Hall' +
                      '<br>***PICTURES GO HERE***' +
                      '<br>***REVIEWS GO HERE***' +
-                     '<br><button type="button">Go Here!</button>' +
+                     '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
                      '</p>',
             maxWidth: 320
          })
@@ -84,7 +84,7 @@ var initialize = function(latitude, longitude) {
                      '<br><b>Type:</b> Dining Hall' +
                      '<br>***PICTURES GO HERE***' +
                      '<br>***REVIEWS GO HERE***' +
-                     '<br><button type="button">Go Here!</button>' +
+                     '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
                      '</p>',
             maxWidth: 320
          })
@@ -97,7 +97,7 @@ var initialize = function(latitude, longitude) {
                      '<br><b>Type:</b> Dining Hall' +
                      '<br>***PICTURES GO HERE***' +
                      '<br>***REVIEWS GO HERE***' +
-                     '<br><button type="button">Go Here!</button>' +
+                     '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
                      '</p>',
             maxWidth: 320
          })
@@ -110,7 +110,7 @@ var initialize = function(latitude, longitude) {
                      '<br><b>Type:</b> Dining Hall' +
                      '<br>***PICTURES GO HERE***' +
                      '<br>***REVIEWS GO HERE***' +
-                     '<br><button type="button">Go Here!</button>' +
+                     '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
                      '</p>',
             maxWidth: 320
          })
@@ -123,7 +123,7 @@ var initialize = function(latitude, longitude) {
                      '<br><b>Type:</b> Dining Hall' +
                      '<br>***PICTURES GO HERE***' +
                      '<br>***REVIEWS GO HERE***' +
-                     '<br><button type="button">Go Here!</button>' +
+                     '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
                      '</p>',
             maxWidth: 320
          })
@@ -136,7 +136,7 @@ var initialize = function(latitude, longitude) {
                      '<br><b>Type:</b> Dining Hall' +
                      '<br>***PICTURES GO HERE***' +
                      '<br>***REVIEWS GO HERE***' +
-                     '<br><button type="button">Go Here!</button>' +
+                     '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
                      '</p>',
             maxWidth: 320
          })
@@ -149,7 +149,7 @@ var initialize = function(latitude, longitude) {
                      '<br><b>Type:</b> Mexican / Fast Food' +
                      '<br>***PICTURES GO HERE***' +
                      '<br>***REVIEWS GO HERE***' +
-                     '<br><button type="button">Go Here!</button>' +
+                     '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
                      '</p>',
             maxWidth: 320
          })
@@ -162,7 +162,7 @@ var initialize = function(latitude, longitude) {
                      '<br><b>Type:</b> Fine Dining' +
                      '<br>***PICTURES GO HERE***' +
                      '<br>***REVIEWS GO HERE***' +
-                     '<br><button type="button">Go Here!</button>' +
+                     '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
                      '</p>',
             maxWidth: 320
          })
@@ -234,6 +234,12 @@ googleMapService.createMarker= function(latitude, longitude,MarkerArray){
         position: initialLocation,
         map: bigMap,
         icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+    });
+    google.maps.event.addListener(marker, 'click', function(e){
+
+        // When clicked, open the selected marker's message
+        currentSelectedMarker = n;
+        n.message.open(map, marker);
     });
     MarkerArray.push(marker);
     renderMarkers(MarkerArray);
