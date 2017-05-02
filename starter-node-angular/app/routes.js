@@ -1,4 +1,5 @@
 const yelp = require('yelp-fusion');
+const Wit = require('node-wit').Wit;
 
 module.exports = function(app) {
 
@@ -8,6 +9,8 @@ module.exports = function(app) {
 
 	const clientId = 'KXC96infFDZ2iOOox_LLbg';
 	const clientSecret = 'eP6r7DHPtsnfQp9DltHDuQyN4ENFk1y71E1VBWfXX0B9DjXAVeoeWctji0ECc58i';
+
+	const access_token = 'YVEL7HXFTUR3M6QYMX4LTKWL4TCNBGHQ';
 
 	app.get('/yelp', function (req,res){
 		console.log(req);
@@ -35,6 +38,17 @@ module.exports = function(app) {
 		}).catch(e => {
 		  console.log(e);
 		});
+	});
+
+	app.get('/bot', function(req, res){
+		var message = req.query.message;
+		const client = new Wit({accessToken: access_token});
+		client.message(message, {})
+		.then((data) => {
+		  console.log('Yay, got Wit.ai response: ' + JSON.stringify(data));
+		  res.status(200).json(data);
+		})
+		.catch(console.error);
 	});
 
 	// frontend routes =========================================================
