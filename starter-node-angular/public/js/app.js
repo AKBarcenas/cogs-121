@@ -7,4 +7,4 @@ angular.module('sampleApp', [
    'GeekCtrl',
    'GeekService',
    'ChatbotCtrl',
-   'btford.socket-io']);
+   'chatSocket']);
