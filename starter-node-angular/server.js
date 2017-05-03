@@ -13,6 +13,10 @@ var db = require('./config/db');
 var port = process.env.PORT || 8080; // set our port
 // mongoose.connect(db.url); // connect to our mongoDB database (commented out after you enter in your own credentials)
 
+// socket modules
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 // get all data/stuff of the body (POST) parameters
 app.use(bodyParser.json()); // parse application/json 
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
@@ -25,6 +29,20 @@ app.use(express.static(__dirname + '/public')); // set the static files location
 require('./app/routes')(app); // pass our application into our routes
 
 // start app ===============================================
-app.listen(port);	
-console.log('Magic happens on port ' + port); 			// shoutout to the user
-exports = module.exports = app; 						// expose app
+//app.listen(port);	
+//console.log('Magic happens on port ' + port); 			// shoutout to the user
+//exports = module.exports = app; 						// expose app
+
+
+// socket listener
+io.on('connect', function(socket) {
+   console.log('user connected');
+   socket.on('disconnect', function() {
+      console.log('user disconnected');
+   });
+});
+
+http.listen(port, function() {
+   console.log('Magic happens on port ' + port);
+   //console.log(process.env.PORT);
+});
