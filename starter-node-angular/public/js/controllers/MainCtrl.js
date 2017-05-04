@@ -1,4 +1,4 @@
-angular.module('MainCtrl', ['gservice','geolocation']).controller('MainController', function($scope,gservice,$location,geolocation) {
+angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('MainController', function($scope,gservice,$location,geolocation,chatSocket) {
 	$scope.markerArray=[];
 	$scope.tagline = 'To the moon and back!';
 	//TODO change this to the user's current location, centered on campus	
