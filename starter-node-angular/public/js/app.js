@@ -1,4 +1,4 @@
-angular.module('sampleApp', [
+var sampleApp=angular.module('sampleApp', [
    'ngRoute',
    'appRoutes',
    'MainCtrl',
@@ -7,4 +7,4 @@ angular.module('sampleApp', [
    'GeekCtrl',
    'GeekService',
    'ChatbotCtrl',
-   'chatSocket']);
+   'btford.socket-io'])
