@@ -24,4 +24,25 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
   		$location.path( path );
 	};
 
+
+	$scope.message="";
+	$scope.send = function() {
+		var userMessage = $scope.message;
+		console.log("Sent: " + $scope.message);
+		chatSocket.emit("fuck");
+
+
+		$('#messages').append('<li class=\"animated fadeInUp\">' + $scope.message + '</li>');
+
+	};
+
+
+
+
+
+
+
+
+
+
 });
