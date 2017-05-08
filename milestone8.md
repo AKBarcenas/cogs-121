@@ -5,5 +5,5 @@
 ![Paper Prototype 1](./prototypes/again/alex.jpg "2")
 3. Sanjeev: This prototype shows the interactions users will make with the restaurant information windows. It demonstrates the categorization, review system, and direction finding we have planned for future implementations of MapEats.
 ![Paper Prototype 1](./prototypes/again/sanjeev.jpg "3")
-4. Todd:  General interaction if the chat bot in the ideal case.  
+4. Todd:  General interaction of the chat bot in the ideal case.  
 ![Paper Prototype 1](./prototypes/again/todd.jpg "4")
