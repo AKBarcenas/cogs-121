@@ -3,7 +3,7 @@
 ![Paper Prototype 1](./prototypes/again/albert.jpg "1")
 2. Alex: 
 ![Paper Prototype 1](./prototypes/again/alex.jpg "2")
-3. Sanjeev: 
+3. Sanjeev: This prototype shows the interactions users will make with the restaurant information windows. It demonstrates the categorization, review system, and direction finding we have planned for future implementations of MapEats.
 ![Paper Prototype 1](./prototypes/again/sanjeev.jpg "3")
 4. Todd:  
 ![Paper Prototype 1](./prototypes/again/todd.jpg "4")
