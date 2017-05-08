@@ -1,5 +1,5 @@
 #Paper Prototypes
-1. Albert: 
+1. Albert: General interaction of the app. Starts from when you first open it, then branches off into different interactions.
 ![Paper Prototype 1](./prototypes/again/albert.jpg "1")
 2. Alex: 
 ![Paper Prototype 1](./prototypes/again/alex.jpg "2")
