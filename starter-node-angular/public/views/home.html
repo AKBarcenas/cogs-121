@@ -109,8 +109,8 @@
 
 <!-- Section -->
 <section class="small-section pt-30">
-<button ng-click="go('/chatBot')" class="btn btn-mod btn-small btn-round btn-gray mb-10"> To Chat Bot</button>
-<button ng-click="add()" class="btn btn-mod btn-small btn-round btn-gray mb-10"> ADD</button>
+<button ng-click="refresh()" class="btn btn-mod btn-small btn-round btn-gray mb-10"> REFRESH MAP</button>
+<button ng-click="routeTo()" class="btn btn-mod btn-small btn-round btn-gray mb-10"> ROUTE</button>
 
     <div class="container relative">
         
@@ -155,10 +155,10 @@
 				
 				</ul>
 
-				<div style="position: relative; bottom: 0px; margin-top: 20px;">
+				<form style="position: relative; bottom: 0px; margin-top: 20px;">
 					<input type="text" style="width: 70%; padding: 3px 0px 3px 3px;" ng-model="message">
-                    <button class="btn btn-mod btn-small btn-round btn-gray mb-10" ng-click='send()' style="width: 30%; padding-top: 7px; padding-bottom: 7px; position: relative; top: 3px;">Submit</button>
-				</div>
+                    <input type="submit" class="btn btn-mod btn-small btn-round btn-gray mb-10" ng-click='send()' style="width: 30%; padding-top: 7px; padding-bottom: 7px; position: relative; top: 3px;" value="Submit">
+				</form>
 			</div>
 
 			<script> /*
