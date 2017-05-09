@@ -13,7 +13,7 @@ module.exports = function(app) {
 	const access_token = 'YVEL7HXFTUR3M6QYMX4LTKWL4TCNBGHQ';
 
 	app.get('/yelp', function (req,res){
-		console.log(req);
+		//console.log(req);
 		var food = req.query.food;
 		var longitude=req.query.longitude;
 		var latitude=req.query.latitude;
@@ -28,13 +28,15 @@ module.exports = function(app) {
 
 		yelp.accessToken(clientId, clientSecret).then(response => {
 		  const client = yelp.client(response.jsonBody.access_token);
-		  console.log("2");
 		  client.search(searchRequest).then(response => {
 		    const firstResult = response.jsonBody.businesses[0];
 		    const prettyJson = JSON.stringify(firstResult, null, 4);
-		    //console.log(prettyJson);
+		    console.log(prettyJson);
+		    console.log(response);
 		    res.status(200).json(firstResult);
-		  });
+		  }).catch(e => {
+			  console.log(e);
+			});
 		}).catch(e => {
 		  console.log(e);
 		});
