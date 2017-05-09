@@ -25,7 +25,18 @@ angular.module('gservice', [])
         // --------------------------------------------------------------
         // Refresh the Map with new data. Function will take new latitude and longitude coordinates.
         googleMapService.refresh = function(latitude, longitude){
+            bigMap=null;
+            // Array of locations obtained from API calls
+            locations = [];
 
+            // Selected Location (initialize to center of America)
+            selectedLat = 39.50;
+            selectedLong = -98.35;
+            initLoc=null;
+            directionsDisplay = new google.maps.DirectionsRenderer({
+                draggable: true
+            });
+            directionsService = new google.maps.DirectionsService();
             // Clears the holding array of locations
             locations = [];
 

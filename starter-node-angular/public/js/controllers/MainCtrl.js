@@ -3,35 +3,40 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 	$scope.tagline = 'To the moon and back!';
 	$scope.DestLong=-117.242502;
 	$scope.DestLat=32.879227;
+	currentLocation={};
 	//TODO change this to the user's current location, centered on
-	//gservice.refresh(32.8800604, -117.2340135);
-	$scope.add = function(){
-			gservice.createMarker(0,0,$scope.markerArray);
+	//gservice.refresh(32.8800604, -117.2340135);32.8696° N, 117.2154° W
+	$scope.add = function(lat,long){
+			gservice.createMarker(lat,long,$scope.markerArray);
+			$scope.setDest(lat,long);
 	};
-	geolocation.getLocation().then(function(locData){
-		console.log(locData);
-		gservice.refresh(locData.coords.latitude,locData.coords.longitude );
-	},function(error){
+	$scope.setDest = function(lat,long){
+		$scope.DestLong=long;
+		$scope.DestLat=lat;
+	};
+	$scope.refresh = function(){
+		geolocation.getLocation().then(function(locData){
+			console.log(locData);
+			gservice.refresh(locData.coords.latitude,locData.coords.longitude );
+			currentLocation.latitude=locData.coords.latitude;
+			currentLocation.longitude=locData.coords.longitude;
+		},function(error){
 
-	},
-	{enableHighAccuracy: true});
-        
-	
-	
-    /*
-	    function below will take our app to another URL/route ie go('/chatBot') takes us
-	    to chat bot page
-    */
-	$scope.go = function ( path ) {
-  		$location.path( path );
-	};
+		},
+		{enableHighAccuracy: true});
+		$scope.markerArray=[];
+		$scope.DestLong=-117.242502;
+		$scope.DestLat=32.879227;
+		currentLocation={};
+    };
+	$scope.refresh();
 
 
 	$scope.message="";
 	$scope.send = function() {
 		var userMessage = $scope.message;
 		console.log("Sent: " + $scope.message);
-		chatSocket.emit("fuck");
+		chatSocket.emit("hello");
 
 
 		$('#messages').append('<li class=\"animated fadeInUp\">' + $scope.message + '</li>');
@@ -53,8 +58,8 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
                  messageContent = intentHashtable["food"][0]["value"];
                  console.log(messageContent + "YEET");
 
-                 var latitude = 32.8328;
-                 var longitude = -117.2713;
+                 var latitude = currentLocation.latitude;
+                 var longitude = currentLocation.longitude;
  
                  var req = {
                      url: '/yelp',
@@ -74,7 +79,7 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
                      console.log(response1);
                      messageContent = "You should try " + response1.data.name;
                      $('#messages').append('<li class=\"animated fadeInUp\">' + messageContent + '</li>');
-
+                     $scope.add(response1.data.coordinates.latitude, response1.data.coordinates.longitude);
                  // Then initialize the map.
                  },function(){});
               },function(){});
