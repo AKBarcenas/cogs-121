@@ -1,7 +1,9 @@
 angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('MainController', function($scope,gservice,$location,geolocation,chatSocket,$http) {
 	$scope.markerArray=[];
 	$scope.tagline = 'To the moon and back!';
-	//TODO change this to the user's current location, centered on campus	
+	$scope.DestLong=-117.242502;
+	$scope.DestLat=32.879227;
+	//TODO change this to the user's current location, centered on
 	//gservice.refresh(32.8800604, -117.2340135);
 	$scope.add = function(){
 			gservice.createMarker(0,0,$scope.markerArray);
@@ -79,8 +81,10 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 
 	};
 
-
-
+	$scope.routeTo=function(){
+		gservice.routeTo($scope.DestLat,$scope.DestLong);
+		console.log("ROUTING TO DESTINATION");
+	}
 
 
 
