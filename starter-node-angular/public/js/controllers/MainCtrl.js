@@ -1,4 +1,4 @@
-angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('MainController', function($scope,gservice,$location,geolocation,chatSocket,$http) {
+angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('MainController', function($scope,$compile,gservice,$location,geolocation,chatSocket,$http) {
 	$scope.markerArray=[];
 	$scope.tagline = 'To the moon and back!';
 	$scope.DestLong=-117.242502;
@@ -89,12 +89,10 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 	$scope.routeTo=function(){
 		gservice.routeTo($scope.DestLat,$scope.DestLong);
 		console.log("ROUTING TO DESTINATION");
-	}
+	};
 
-
-
-
-
-
+        $scope.testPrint=function(){
+           console.log("CONTROLLER IS CONNECTED");
+        };
 
 });

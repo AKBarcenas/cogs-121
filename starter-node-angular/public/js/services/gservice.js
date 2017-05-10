@@ -75,6 +75,15 @@ angular.module('gservice', [])
             });
         }
         directionsDisplay.setMap(map);
+        
+        var pinesText =  '<p><b>Pines</b>' +
+                         '<br><b>Hours:</b> 7 AM - 9 PM' +
+                         '<br><b>Type:</b> Dining Hall' +
+                         '<br>***PICTURES GO HERE***' +
+                         '<br>***REVIEWS GO HERE***' +
+                         '<br><button ng-app="MainCtrl" ng-controller="MainController" ng-click="testPrint()">Go Here!</button>' +
+                         '</p>';
+        var compiled = $compile(pinesText)($scope);
 
         // temp pre-populated restaurants for milestone 5
         // TODO remove this
@@ -82,13 +91,7 @@ angular.module('gservice', [])
           {
              latlon: new google.maps.LatLng(32.879227, -117.242502),
              message: new google.maps.InfoWindow({
-                content: '<p><b>Pines</b>' +
-                         '<br><b>Hours:</b> 7 AM - 9 PM' +
-                         '<br><b>Type:</b> Dining Hall' +
-                         '<br>***PICTURES GO HERE***' +
-                         '<br>***REVIEWS GO HERE***' +
-                         '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
-                         '</p>',
+                content: compiled[0],
                 maxWidth: 320
              })
           },
