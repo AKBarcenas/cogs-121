@@ -34,9 +34,11 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 
 	$scope.message="";
 	$scope.send = function() {
+
 		var userMessage = $scope.message;
 		console.log("Sent: " + $scope.message);
 		chatSocket.emit("hello");
+		document.getElementById("submitButton").setAttribute("disabled", true);
 
 
 		$('#messages').append('<li class=\"animated fadeInUp\">' + $scope.message + '</li>');
@@ -51,6 +53,8 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
                   dataType: 'json',
                   method: 'GET'
               }
+        $scope.message = "";
+
 
 		$http(ai).then(function(response){
                  console.log(response);
@@ -80,6 +84,7 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
                      messageContent = "You should try " + response1.data.name;
                      $('#messages').append('<li class=\"animated fadeInUp\">' + messageContent + '</li>');
                      $scope.add(response1.data.coordinates.latitude, response1.data.coordinates.longitude);
+                     document.getElementById("submitButton").disabled = false;
                  // Then initialize the map.
                  },function(){});
               },function(){});
