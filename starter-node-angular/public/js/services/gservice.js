@@ -82,12 +82,12 @@ angular.module('gservice', [])
           {
              latlon: new google.maps.LatLng(32.879227, -117.242502),
              message: new google.maps.InfoWindow({
-                content: '<p><b>Pines</b>' +
-                         '<br><b>Hours:</b> 7 AM - 9 PM' +
-                         '<br><b>Type:</b> Dining Hall' +
-                         '<br>***PICTURES GO HERE***' +
-                         '<br>***REVIEWS GO HERE***' +
-                         '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
+                content: '<h3>Pines</h3>' +
+                         '<p><b>Hours:</b> 7 AM - 9 PM</p>' +
+                         '<p><b>Type:</b> Dining Hall</p>' +
+                         '<p>***PICTURES GO HERE***</p>' +
+                         '<p>***REVIEWS GO HERE***</p>' +
+                         '<p><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
                          '</p>',
                 maxWidth: 320
              })
@@ -95,12 +95,12 @@ angular.module('gservice', [])
           {
              latlon: new google.maps.LatLng(32.8839368, -117.2333183),
              message: new google.maps.InfoWindow({
-                content: '<p><b>Canyon Vista TEST</b>' +
-                         '<br><b>Hours:</b> 7 AM - 9 PM' +
-                         '<br><b>Type:</b> Dining Hall' +
-                         '<br>***PICTURES GO HERE***' +
-                         '<br>***REVIEWS GO HERE***' +
-                         '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button" ng-click="testPrint()">Go Here!</button>' +
+                content: '<h3>Canyon Vista</h3>' +
+                         '<p><b>Hours:</b> 7 AM - 9 PM</p>' +
+                         '<p><b>Type:</b> Dining Hall</p>' +
+                         '<p>***PICTURES GO HERE***</p>' +
+                         '<p>***REVIEWS GO HERE***</p>' +
+                         '<p><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
                          '</p>',
                 maxWidth: 320
              })
@@ -108,12 +108,12 @@ angular.module('gservice', [])
           {
              latlon: new google.maps.LatLng(32.8788119, -117.2304304),
              message: new google.maps.InfoWindow({
-                content: '<p><b>Foodworx</b>' +
-                         '<br><b>Hours:</b> 7 AM - 9 PM' +
-                         '<br><b>Type:</b> Dining Hall' +
-                         '<br>***PICTURES GO HERE***' +
-                         '<br>***REVIEWS GO HERE***' +
-                         '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
+                content: '<h3>Foodworx</h3>' +
+                         '<p><b>Hours:</b> 7 AM - 9 PM</p>' +
+                         '<p><b>Type:</b> Dining Hall</p>' +
+                         '<p>***PICTURES GO HERE***</p>' +
+                         '<p>***REVIEWS GO HERE***</p>' +
+                         '<p><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
                          '</p>',
                 maxWidth: 320
              })
@@ -121,12 +121,12 @@ angular.module('gservice', [])
           {
              latlon: new google.maps.LatLng(32.8747459, -117.2420341),
              message: new google.maps.InfoWindow({
-                content: '<p><b>64 Degrees</b>' +
-                         '<br><b>Hours:</b> 7 AM - 9 PM' +
-                         '<br><b>Type:</b> Dining Hall' +
-                         '<br>***PICTURES GO HERE***' +
-                         '<br>***REVIEWS GO HERE***' +
-                         '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
+                content: '<h3>64 Degrees</h3>' +
+                         '<p><b>Hours:</b> 7 AM - 9 PM</p>' +
+                         '<p><b>Type:</b> Dining Hall</p>' +
+                         '<p>***PICTURES GO HERE***</p>' +
+                         '<p>***REVIEWS GO HERE***</p>' +
+                         '<p><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
                          '</p>',
                 maxWidth: 320
              })
@@ -134,12 +134,12 @@ angular.module('gservice', [])
           {
              latlon: new google.maps.LatLng(32.8832115, -117.2426718),
              message: new google.maps.InfoWindow({
-                content: '<p><b>Oceanview Terrace</b>' +
-                         '<br><b>Hours:</b> 7 AM - 9 PM' +
-                         '<br><b>Type:</b> Dining Hall' +
-                         '<br>***PICTURES GO HERE***' +
-                         '<br>***REVIEWS GO HERE***' +
-                         '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
+                content: '<h3>Oceanview Terrace</h3>' +
+                         '<p><b>Hours:</b> 7 AM - 9 PM</p>' +
+                         '<p><b>Type:</b> Dining Hall</p>' +
+                         '<p>***PICTURES GO HERE***</p>' +
+                         '<p>***REVIEWS GO HERE***</p>' +
+                         '<p><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
                          '</p>',
                 maxWidth: 320
              })
@@ -147,12 +147,12 @@ angular.module('gservice', [])
           {
              latlon: new google.maps.LatLng(32.886377, -117.24303),
              message: new google.maps.InfoWindow({
-                content: '<p><b>Cafe Ventanas</b>' +
-                         '<br><b>Hours:</b> 7 AM - 9 PM' +
-                         '<br><b>Type:</b> Dining Hall' +
-                         '<br>***PICTURES GO HERE***' +
-                         '<br>***REVIEWS GO HERE***' +
-                         '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
+                content: '<h3>Cafe Ventanas</h3>' +
+                         '<p><b>Hours:</b> 7 AM - 9 PM</p>' +
+                         '<p><b>Type:</b> Dining Hall</p>' +
+                         '<p>***PICTURES GO HERE***</p>' +
+                         '<p>***REVIEWS GO HERE***</p>' +
+                         '<p><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
                          '</p>',
                 maxWidth: 320
              })
@@ -160,12 +160,12 @@ angular.module('gservice', [])
           {
              latlon: new google.maps.LatLng(32.882915, -117.2403442),
              message: new google.maps.InfoWindow({
-                content: '<p><b>Goody\'s Place and Market</b>' +
-                         '<br><b>Hours:</b> 7 AM - 10 PM' +
-                         '<br><b>Type:</b> Mexican / Fast Food' +
-                         '<br>***PICTURES GO HERE***' +
-                         '<br>***REVIEWS GO HERE***' +
-                         '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
+                content: '<h3>Goody\'s Place and Market</h3>' +
+                         '<p><b>Hours:</b> 7 AM - 9 PM</p>' +
+                         '<p><b>Type:</b> Dining Hall</p>' +
+                         '<p>***PICTURES GO HERE***</p>' +
+                         '<p>***REVIEWS GO HERE***</p>' +
+                         '<p><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
                          '</p>',
                 maxWidth: 320
              })
@@ -173,12 +173,12 @@ angular.module('gservice', [])
           {
              latlon: new google.maps.LatLng(32.887978, -117.242072),
              message: new google.maps.InfoWindow({
-                content: '<p><b>The Bistro</b>' +
-                         '<br><b>Hours:</b> 12 PM - 8 PM' +
-                         '<br><b>Type:</b> Fine Dining' +
-                         '<br>***PICTURES GO HERE***' +
-                         '<br>***REVIEWS GO HERE***' +
-                         '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
+                content: '<h3>The Bistro</h3>' +
+                         '<p><b>Hours:</b> 7 AM - 9 PM</p>' +
+                         '<p><b>Type:</b> Dining Hall</p>' +
+                         '<p>***PICTURES GO HERE***</p>' +
+                         '<p>***REVIEWS GO HERE***</p>' +
+                         '<p><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
                          '</p>',
                 maxWidth: 320
              })

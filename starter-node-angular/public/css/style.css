@@ -127,7 +127,13 @@ Section Text:       15px/1.7 "Open Sans", arial, sans-serif;
     display: block;    
 
     }   
+    
+#map h3	{margin-bottom: 5px;
+		line-height: 1;
+		}
 
+#map p	{margin-bottom: 6px;
+		}
 /* ==============================
    Common styles
    ============================== */
