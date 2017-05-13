@@ -85,10 +85,16 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
               },function(){});
 
 	};
-
+	$scope.directions=[];
 	$scope.routeTo=function(){
-		gservice.routeTo($scope.DestLat,$scope.DestLong);
+		gservice.routeTo($scope.DestLat,$scope.DestLong).then(function(r){
+			$scope.directions=r;
+		});
 		console.log("ROUTING TO DESTINATION");
+		$scope.print();
+	};
+	$scope.print = function(){
+		console.log($scope.directions);
 	}
 
 

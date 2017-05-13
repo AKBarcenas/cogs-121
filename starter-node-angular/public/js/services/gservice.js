@@ -3,7 +3,7 @@
 
 // Creates the gservice factory. This will be the primary means by which we interact with Google Maps
 angular.module('gservice', [])
-    .factory('gservice', function($http){
+    .factory('gservice', function($http,$q){
 
         // Initialize Variables
         // -------------------------------------------------------------
@@ -273,12 +273,17 @@ angular.module('gservice', [])
             destination: dest,
             travelMode: google.maps.TravelMode.DRIVING
         };
+        var deferred = $q.defer();
         directionsService.route(request, function (response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 directionsDisplay.setDirections(response);
-                console.log(status);
+                directionsDisplay.setPanel(document.getElementById('directionsList'));
+                console.log(response.routes[0].legs[0].steps);
+                response.routes[0].legs[0].steps;
+                deferred.resolve(response.routes[0].legs[0].steps);
             }
         });
+        return deferred.promise;
     };
     // Refresh the page upon window load. Use the initial latitude and longitude
     google.maps.event.addDomListener(window, 'load',
