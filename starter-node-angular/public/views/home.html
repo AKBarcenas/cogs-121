@@ -169,10 +169,14 @@
 <section class="small-section pt-30">
     <div class="container relative">
         
-        <div class="row">
+        <div ng-repeat="direction in directions" class="row">
             
             <div class="col-sm-12">
-                <div id="directions"></div>
+                <div ng-bind-html="$sce.trustAsHtml(direction.instructions)" id="directions">
+
+                        {{direction.instructions}}
+                    
+                </div>
               
             </div>
         </div>

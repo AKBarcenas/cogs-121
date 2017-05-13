@@ -1,4 +1,5 @@
-angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('MainController', function($scope,gservice,$location,geolocation,chatSocket,$http) {
+angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('MainController', function($scope,gservice,$location,geolocation,chatSocket,$http, $sce) {
+	$scope.$sce = $sce;
 	$scope.markerArray=[];
 	$scope.tagline = 'To the moon and back!';
 	$scope.DestLong=-117.242502;
