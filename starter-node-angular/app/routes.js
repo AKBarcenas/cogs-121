@@ -32,7 +32,6 @@ module.exports = function(app) {
 		    const firstResult = response.jsonBody.businesses[0];
 		    const prettyJson = JSON.stringify(firstResult, null, 4);
 		    console.log(prettyJson);
-		    console.log(response);
 		    res.status(200).json(firstResult);
 		  }).catch(e => {
 			  console.log(e);

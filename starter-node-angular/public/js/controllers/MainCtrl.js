@@ -53,35 +53,53 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
               }
 
 		$http(ai).then(function(response){
-                 console.log(response);
-                 intentHashtable = response.data.entities;
-                 messageContent = intentHashtable["food"][0]["value"];
-                 console.log(messageContent + "YEET");
+                console.log(response);
+                intentHashtable = response.data.entities;
 
-                 var latitude = currentLocation.latitude;
-                 var longitude = currentLocation.longitude;
- 
-                 var req = {
-                     url: '/yelp',
-                     params: {
-                         'food' : messageContent,
-                         'longitude': longitude,
-                         'latitude' : latitude
-                     },
-                     dataType: 'json',
-                     method: 'GET'
-                 }
- 
- 				console.log("here");
-                 // Perform an AJAX call to get all of the records in the db.
-                 //TODO this will be our record of restaurants
-                 $http(req).then(function(response1){
-                     console.log(response1);
-                     messageContent = "You should try " + response1.data.name;
-                     $('#messages').append('<li class=\"animated fadeInUp\">' + messageContent + '</li>');
-                     $scope.add(response1.data.coordinates.latitude, response1.data.coordinates.longitude);
-                 // Then initialize the map.
-                 },function(){});
+                var containsFood = intentHashtable.hasOwnProperty('food');
+                var containsFavorites = intentHashtable.hasOwnProperty('favorites');
+                var containsDirections = intentHashtable.hasOwnProperty('directions');
+                var containsAcceptance = intentHashtable.hasOwnProperty('acceptance');
+                var containsRejection = intentHashtable.hasOwnProperty('rejection');
+                var containsAddition = intentHashtable.hasOwnProperty('addition');
+
+
+                if(containsFood && !containsFavorites && !containsDirections) {
+	                messageContent = intentHashtable["food"][0]["value"];
+	                console.log(messageContent + "YEET");
+
+	                var latitude = currentLocation.latitude;
+	                var longitude = currentLocation.longitude;
+	 
+	                var req = {
+	                    url: '/yelp',
+	                    params: {
+	                        'food' : messageContent,
+	                        'longitude': longitude,
+	                        'latitude' : latitude
+	                    },
+	                    dataType: 'json',
+	                    method: 'GET'
+	                }
+	 
+	 				console.log("here");
+	                // Perform an AJAX call to get all of the records in the db.
+	                //TODO this will be our record of restaurants
+	                $http(req).then(function(response1){
+	                    console.log(response1);
+	                    messageContent = "You should try " + response1.data.name;
+	                    $('#messages').append('<li class=\"animated fadeInUp\">' + messageContent + '</li>');
+	                    $scope.add(response1.data.coordinates.latitude, response1.data.coordinates.longitude);
+	                // Then initialize the map.
+	                },function(){});
+	            }
+
+	            else  {
+                	message = "I'm not sure what you are trying to tell me. Let's try finding another food item you want to have.";
+                	$('#messages').append('<li class=\"animated fadeInUp\">' + message + '</li>'); 
+                }	
+
+
               },function(){});
 
 	};
