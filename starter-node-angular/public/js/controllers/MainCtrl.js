@@ -87,9 +87,16 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 	                //TODO this will be our record of restaurants
 	                $http(req).then(function(response1){
 	                    console.log(response1);
-	                    messageContent = "You should try " + response1.data.name;
-	                    $('#messages').append('<li class=\"animated fadeInUp\">' + messageContent + '</li>');
-	                    $scope.add(response1.data.coordinates.latitude, response1.data.coordinates.longitude);
+	                    if(response1.data.hasOwnProperty('name'))  {
+	                    	message = "You should go to a place called " + response1.data.name + ". You can go back to the map for directions. You can also tell me another type of food that you want.";
+		                    $('#messages').append('<li class=\"animated fadeInUp\">' + message + '</li>');
+		                    $scope.add(response1.data.coordinates.latitude, response1.data.coordinates.longitude);
+	                    }
+
+	                    else  {
+	                    	message = "I'm not sure what you are trying to tell me. Let's try finding another food item you want to have.";
+	                    	$('#messages').append('<li class=\"animated fadeInUp\">' + message + '</li>'); 
+	                    }
 	                // Then initialize the map.
 	                },function(){});
 	            }
