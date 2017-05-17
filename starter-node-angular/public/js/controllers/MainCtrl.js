@@ -146,14 +146,8 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
                 	$scope.chatDisable=false;
 
                 }	
-                
-                
-                
                 var objDiv = document.getElementById("messageWindow");
 				objDiv.scrollTop = objDiv.scrollHeight;
-				
-
-
               },function(){});
 
 	};
@@ -169,17 +163,6 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 		console.log("Scope print");
 		console.log($scope.directions);
 	}
-
-
-
-/*
-        $scope.message = "";
-
-                     document.getElementById("submitButton").disabled = false;
-
-*/
-
-
 
 
 
