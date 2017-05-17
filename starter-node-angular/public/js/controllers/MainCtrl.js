@@ -1,5 +1,6 @@
 angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('MainController', function($scope,$compile,gservice,$location,geolocation,chatSocket,$http) {
 	$scope.markerArray=[];
+    $scope.locations = [];
 	$scope.tagline = 'To the moon and back!';
 	$scope.DestLong=-117.242502;
 	$scope.DestLat=32.879227;
@@ -29,7 +30,155 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 		$scope.DestLat=32.879227;
 		currentLocation={};
     };
+    $scope.addLocations = function(){
+        var pinesText =  '<p><b>Pines</b>' +
+                         '<br><b>Hours:</b> 7 AM - 9 PM' +
+                         '<br><b>Type:</b> Dining Hall' +
+                         '<br>***PICTURES GO HERE***' +
+                         '<br>***REVIEWS GO HERE***' +
+                         '<br><button ng-app="MainCtrl" ng-controller="MainController" ng-click="testPrint()">Go Here!</button>' +
+                         '</p>';
+        var compiled = $compile(pinesText);
+        compiled($scope);
+
+        // temp pre-populated restaurants for milestone 5
+        // TODO remove this
+        $scope.locations = [
+          {
+             latlon: new google.maps.LatLng(32.879227, -117.242502),
+             message: new google.maps.InfoWindow({
+                content: compiled[0],
+                maxWidth: 320
+             })
+          },
+          {
+             latlon: new google.maps.LatLng(32.8839368, -117.2333183),
+             message: new google.maps.InfoWindow({
+                content: '<p><b>Canyon Vista TEST</b>' +
+                         '<br><b>Hours:</b> 7 AM - 9 PM' +
+                         '<br><b>Type:</b> Dining Hall' +
+                         '<br>***PICTURES GO HERE***' +
+                         '<br>***REVIEWS GO HERE***' +
+                         '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button" ng-click="testPrint()">Go Here!</button>' +
+                         '</p>',
+                maxWidth: 320
+             })
+          },
+          {
+             latlon: new google.maps.LatLng(32.8788119, -117.2304304),
+             message: new google.maps.InfoWindow({
+                content: '<p><b>Foodworx</b>' +
+                         '<br><b>Hours:</b> 7 AM - 9 PM' +
+                         '<br><b>Type:</b> Dining Hall' +
+                         '<br>***PICTURES GO HERE***' +
+                         '<br>***REVIEWS GO HERE***' +
+                         '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
+                         '</p>',
+                maxWidth: 320
+             })
+          },
+          {
+             latlon: new google.maps.LatLng(32.8747459, -117.2420341),
+             message: new google.maps.InfoWindow({
+                content: '<p><b>64 Degrees</b>' +
+                         '<br><b>Hours:</b> 7 AM - 9 PM' +
+                         '<br><b>Type:</b> Dining Hall' +
+                         '<br>***PICTURES GO HERE***' +
+                         '<br>***REVIEWS GO HERE***' +
+                         '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
+                         '</p>',
+                maxWidth: 320
+             })
+          },
+          {
+             latlon: new google.maps.LatLng(32.8832115, -117.2426718),
+             message: new google.maps.InfoWindow({
+                content: '<p><b>Oceanview Terrace</b>' +
+                         '<br><b>Hours:</b> 7 AM - 9 PM' +
+                         '<br><b>Type:</b> Dining Hall' +
+                         '<br>***PICTURES GO HERE***' +
+                         '<br>***REVIEWS GO HERE***' +
+                         '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
+                         '</p>',
+                maxWidth: 320
+             })
+          },
+          {
+             latlon: new google.maps.LatLng(32.886377, -117.24303),
+             message: new google.maps.InfoWindow({
+                content: '<p><b>Cafe Ventanas</b>' +
+                         '<br><b>Hours:</b> 7 AM - 9 PM' +
+                         '<br><b>Type:</b> Dining Hall' +
+                         '<br>***PICTURES GO HERE***' +
+                         '<br>***REVIEWS GO HERE***' +
+                         '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
+                         '</p>',
+                maxWidth: 320
+             })
+          },
+          {
+             latlon: new google.maps.LatLng(32.882915, -117.2403442),
+             message: new google.maps.InfoWindow({
+                content: '<p><b>Goody\'s Place and Market</b>' +
+                         '<br><b>Hours:</b> 7 AM - 10 PM' +
+                         '<br><b>Type:</b> Mexican / Fast Food' +
+                         '<br>***PICTURES GO HERE***' +
+                         '<br>***REVIEWS GO HERE***' +
+                         '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
+                         '</p>',
+                maxWidth: 320
+             })
+          },
+          {
+             latlon: new google.maps.LatLng(32.887978, -117.242072),
+             message: new google.maps.InfoWindow({
+                content: '<p><b>The Bistro</b>' +
+                         '<br><b>Hours:</b> 12 PM - 8 PM' +
+                         '<br><b>Type:</b> Fine Dining' +
+                         '<br>***PICTURES GO HERE***' +
+                         '<br>***REVIEWS GO HERE***' +
+                         '<br><button class= "btn btn-mod btn-small btn-round btn-gray mb-10" type="button">Go Here!</button>' +
+                         '</p>',
+                maxWidth: 320
+             })
+          }
+        ];
+    };
+    $scope.addMarkers = function(){
+        // Loop through each location in the array and place a marker
+        $scope.locations.forEach(function(n, i){
+            var marker = new google.maps.Marker({
+                position: n.latlon,
+                map: map,
+                title: "Big Map",
+                icon: "http://maps.google.com/mapfiles/ms/icons/restaurant.png",
+            });
+
+            // For each marker created, add a listener that checks for clicks
+            google.maps.event.addListener(marker, 'click', function(e){
+                console.log(e);
+                // When clicked, open the selected marker's message
+                currentSelectedMarker = n;
+                n.message.open(map, marker);
+            });
+        });
+
+        // Set initial location as a bouncing red marker
+        var initialLocation = new google.maps.LatLng(latitude, longitude);
+        var marker = new google.maps.Marker({
+            position: initialLocation,
+            //animation: google.maps.Animation.BOUNCE,
+            map: map,
+            icon: 'http://maps.google.com/mapfiles/arrow.png'
+        });
+        lastMarker = marker;
+        bigMap=map;
+        initLoc=initialLocation;
+    };
+
 	$scope.refresh();
+    $scope.addLocations();
+    $scope.addMarkers();
 
 
 	$scope.message="";
@@ -91,8 +240,8 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 		console.log("ROUTING TO DESTINATION");
 	};
 
-        $scope.testPrint=function(){
-           console.log("CONTROLLER IS CONNECTED");
-        };
+    $scope.testPrint=function(){
+        console.log("CONTROLLER IS CONNECTED");
+    };
 
 });

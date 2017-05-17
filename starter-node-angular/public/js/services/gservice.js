@@ -1,6 +1,3 @@
-
-
-
 // Creates the gservice factory. This will be the primary means by which we interact with Google Maps
 angular.module('gservice', [])
     .factory('gservice', function($http){
@@ -76,6 +73,7 @@ angular.module('gservice', [])
         }
         directionsDisplay.setMap(map);
         
+        /*
         var pinesText =  '<p><b>Pines</b>' +
                          '<br><b>Hours:</b> 7 AM - 9 PM' +
                          '<br><b>Type:</b> Dining Hall' +
@@ -187,7 +185,9 @@ angular.module('gservice', [])
              })
           }
         ];
+        */
         
+        /*
         // Loop through each location in the array and place a marker
         // TODO REMOVE THIS
         temp_restaurants.forEach(function(n, i){
@@ -206,14 +206,16 @@ angular.module('gservice', [])
                 n.message.open(map, marker);
             });
         });
+        */
 
+        /*
         // Loop through each location in the array and place a marker
         locations.forEach(function(n, i){
             var marker = new google.maps.Marker({
                 position: n.latlon,
                 map: map,
                 title: "Big Map",
-                icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+                icon: "http://maps.google.com/mapfiles/ms/icons/restaurant.png",
             });
 
             // For each marker created, add a listener that checks for clicks
@@ -236,6 +238,7 @@ angular.module('gservice', [])
         lastMarker = marker;
         bigMap=map;
         initLoc=initialLocation;
+        */
 
     };
     googleMapService.createMarker= function(latitude, longitude,MarkerArray){
