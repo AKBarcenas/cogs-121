@@ -6,5 +6,5 @@ var sampleApp=angular.module('sampleApp', [
    'NerdService',
    'GeekCtrl',
    'GeekService',
-   'ChatbotCtrl',
+   'AboutCtrl',
    'btford.socket-io'])

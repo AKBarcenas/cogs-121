@@ -1,0 +1,177 @@
+<!-- Page Wrap -->
+<div class="page" id="top">
+
+<!-- Top Bar  Can add stuff if we want to 
+<div class="top-bar">
+    <div class="container clearfix">
+        &nbsp; 
+    </div>
+</div>
+ End Top Bar -->
+
+<!-- Navigation panel -->
+<nav class="main-nav js-stick">
+    <div class="container relative clearfix">
+        <!-- Logo ( * your text or image into link tag *) -->
+        <div class="nav-logo-wrap local-scroll">
+            <a href="mp-index.html" class="logo">
+                <h5>MapEats</h5>
+                <!--<img src="images/logo-dark.png" alt="" />-->
+            </a>
+        </div>
+        <div class="mobile-nav">
+            <i class="fa fa-bars"></i>
+        </div>
+        
+        <!-- Main Menu -->
+        <div class="inner-nav desktop-nav">
+            <ul class="clearlist">
+                
+                <!-- Item With Sub -->
+                <li>
+                    <a href="#" class="mn-has-sub active">Home</a>
+                    <!--<a href="./chatBot" class="mn" style="margin-left: 10px;">Chatbot</a> -->          
+                  
+                </li>
+
+            </ul>
+        </div>
+        <!-- End Main Menu -->
+        
+
+    </div>
+</nav>
+<!-- End Navigation panel -->
+
+
+
+<!-- Section -->
+<section class="small-section pt-20 pb-0">
+<div id="directionsList"  ng-show="false" class="panel panel-primary"></div>
+
+    <div class="container relative">
+
+    <div class="row">
+			<div class="col-md-8 col-md-offset-2 col-sm-12" id="karan">
+				<div class="row">
+					<div class="col-xs-9">
+               			 <h3 class="blog-item-title font-alt mb-10" id="chatBot" ><img src="images/karan.png" alt="karan" style="height: 54px;">Chat with Karan
+
+                		</h3>
+                	</div>
+                	<div class="col-xs-3">
+                		<a ng-click="goToMap()" href="" class="animated fadeIn" style="margin-top: 6px; text-align: center; width: 100%; display: block; padding: 7px 2px 7px 2px; background-color: yellow; font-size: 12px;">View map</a>
+                	</div>
+                </div>
+
+                <div class="row" id="messageWindow" style="max-height: 380px; overflow-y: scroll;">
+					<ul class="window" id="messages">
+						<li class="animated fadeInUp">
+							Hello! Welcome to MapEats! I'm Karan. How can I help you today?
+						</li>
+                    	<!-- Additional messages are appended -->
+					</ul>
+				</div>
+
+
+				<div class="row">
+					<form style="position: relative; bottom: 0px; margin-top: 20px;">
+						<div class="col-md-9 col-sm-9 col-xs-9" style="padding-right: 4px;">
+							<input ng-disabled= "chatDisable" type="text" style="padding: 3px 0px 3px 3px; border: 1px solid #CCCCCC; width: 100%;" ng-model="message">
+                   		</div>
+                   		<div class="col-md-3 col-sm-3 col-xs-3" style="padding-left: 4px;">
+                			<input ng-disabled= "chatDisable" type="submit" class="btn btn-mod btn-small btn-round btn-gray mb-10" ng-click='send()' style="padding-top: 6px; padding-bottom: 6px; position: relative; top: -1px; width: 100%;" value="Submit">
+						</div>
+					</form>
+				</div>
+
+			</div>
+        </div>
+        
+
+        <div class="row mt-40">
+            <div class="col-sm-12">
+                
+                <!-- Post Slider -->
+                <div class="blog-media mb-20 mb-xs-30">
+                    <ul class="clearlist">
+                        
+                        	<!-- MAP -->
+                            <div id="map"></div>
+                            <a ng-click="goToChat()" href="" style="text-align: center; width: 100%; display: block; padding-top: 10px; padding-bottom: 10px; background-color: cyan;">Click to chat wtih Karan</a>
+                    </ul>
+                </div> 
+			</div>
+		</div>
+
+		<div class="row">
+			<button ng-click="refresh()" class="col-xs-4 btn btn-mod btn-small btn-round btn-gray mb-10" style="padding: 4px 8px;"> REFRESH MAP</button>
+			<button ng-click="routeTo()" class="col-xs-4 btn btn-mod btn-small btn-round btn-gray mb-10" style="padding: 4px 8px;"> ROUTE</button>
+			<button ng-click="print()" class="col-xs-4 btn btn-mod btn-small btn-round btn-gray mb-10" style="padding: 4px 8px;"> Print ROUTE</button>
+		</div>
+
+
+        
+    </div>
+</section>
+<!-- End Section -->
+
+
+<!-- Section -->
+<section class="small-section pt-20">
+    <div class="container relative">
+        
+        <div ng-repeat="direction in directions" class="row">
+            
+            <div class="col-sm-12">
+                <div ng-bind-html="$sce.trustAsHtml(direction.instructions)" id="directions">
+
+                        {{direction.instructions}}
+                    
+                </div>
+              
+            </div>
+        </div>
+        
+    </div>
+</section>
+<!-- End Section -->
+
+
+<!-- Foter -->
+<footer class="page-section bg-gray-lighter footer pb-60 pt-80">
+    <div class="container">
+        
+        <!-- Social Links -->
+        <div class="footer-social-links mb-60 mb-xs-60">
+            <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+           
+        </div>
+        <!-- End Social Links -->  
+        
+        <!-- Footer Text -->
+        <div class="footer-text">
+            
+            <!-- Copyright -->
+            <div class="footer-copy font-alt">
+                &copy; MapEats
+            </div>
+            <!-- End Copyright -->
+            
+           
+        </div>
+        <!-- End Footer Text --> 
+        
+     </div>        
+</footer>
+<!-- End Foter -->
+
+
+</div>
+<!-- End Page Wrap -->
+
+
+
+
+
+
