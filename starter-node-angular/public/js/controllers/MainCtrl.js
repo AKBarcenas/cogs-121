@@ -121,6 +121,10 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 		                    
 		                    var objDiv = document.getElementById("messageWindow");
 							objDiv.scrollTop = objDiv.scrollHeight;
+							
+							gservice.routeTo($scope.DestLat,$scope.DestLong).then(function(r){
+								$scope.directions=r;
+							});
 	                    }
 
 	                    else  {
@@ -162,6 +166,7 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 		$scope.print();
 	};
 	$scope.print = function(){
+		console.log("Scope print");
 		console.log($scope.directions);
 	}
 
