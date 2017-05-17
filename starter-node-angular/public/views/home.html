@@ -46,33 +46,25 @@
 
 
 <!-- Section -->
-<section class="small-section pt-30">
+<section class="small-section pt-20 pb-0">
 <div id="directionsList"  ng-show="false" class="panel panel-primary"></div>
-<button ng-click="refresh()" class="btn btn-mod btn-small btn-round btn-gray mb-10"> REFRESH MAP</button>
-<button ng-click="routeTo()" class="btn btn-mod btn-small btn-round btn-gray mb-10"> ROUTE</button>
-<button ng-click="print()" class="btn btn-mod btn-small btn-round btn-gray mb-10"> Print ROUTE</button>
 
     <div class="container relative">
-        
-        <div class="row">
-            
-            <div class="col-sm-12">
-                
-                <!-- Post Slider -->
-                <div class="blog-media mb-70 mb-xs-50">
-                    <ul class="clearlist">
-                        
-                        	<!-- MAP -->
-                            <div id="map"></div>
-                            <a ng-click="goToChat()" href="" style="text-align: center; width: 100%; display: block; padding-top: 10px; padding-bottom: 10px; background-color: cyan;">Click to chat wtih Karan</a>
-                    </ul>
-                </div> 
-			</div>
+
+    <div class="row">
+			<div class="col-md-8 col-md-offset-2 col-sm-12" id="karan" style="height: 500px;">
+				<div class="row">
+					<div class="col-xs-9">
+               			 <h3 class="blog-item-title font-alt mb-10" id="chatBot" ><img src="images/karan.png" alt="karan" style="height: 54px;">Chat with Karan
+
+                		</h3>
+                	</div>
+                	<div class="col-xs-3">
+                		<a ng-click="goToMap()" href="" class="animated fadeIn" style="margin-top: 6px; text-align: center; width: 100%; display: block; padding: 7px 2px 7px 2px; background-color: yellow; font-size: 12px;">View map</a>
+                	</div>
+                </div>
 
 
-			<div class="col-md-8 col-md-offset-2 col-sm-12" id="karan">
-                <h3 class="blog-item-title font-alt mb-10" id="chatBot" ><img src="images/karan.png" alt="karan" style="height: 80px;"><a href="#">Chat with Karan</a></h3>
-                <a ng-click="goToMap()" href="" class="animated fadeIn" style="text-align: center; width: 100%; display: block; margin-top: 10px; padding-top: 10px; padding-bottom: 10px; background-color: yellow;">View map</a>
                 
 				<ul class="window" id="messages">
 					<li class="animated fadeInUp">
@@ -96,13 +88,37 @@
 			</div>
         </div>
         
+        <div class="row">
+            
+            <div class="col-sm-12">
+                
+                <!-- Post Slider -->
+                <div class="blog-media mb-20 mb-xs-30">
+                    <ul class="clearlist">
+                        
+                        	<!-- MAP -->
+                            <div id="map"></div>
+                            <a ng-click="goToChat()" href="" style="text-align: center; width: 100%; display: block; padding-top: 10px; padding-bottom: 10px; background-color: cyan;">Click to chat wtih Karan</a>
+                    </ul>
+                </div> 
+			</div>
+		</div>
+
+		<div class="row">
+			<button ng-click="refresh()" class="col-xs-4 btn btn-mod btn-small btn-round btn-gray mb-10" style="padding: 4px 8px;"> REFRESH MAP</button>
+			<button ng-click="routeTo()" class="col-xs-4 btn btn-mod btn-small btn-round btn-gray mb-10" style="padding: 4px 8px;"> ROUTE</button>
+			<button ng-click="print()" class="col-xs-4 btn btn-mod btn-small btn-round btn-gray mb-10" style="padding: 4px 8px;"> Print ROUTE</button>
+		</div>
+
+
+        
     </div>
 </section>
 <!-- End Section -->
 
 
 <!-- Section -->
-<section class="small-section pt-30">
+<section class="small-section pt-20">
     <div class="container relative">
         
         <div ng-repeat="direction in directions" class="row">
