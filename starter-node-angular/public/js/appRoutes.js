@@ -7,9 +7,9 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/home.html',
 			controller: 'MainController'
 		})
-		.when('/chatBot',{
-			templateUrl: 'views/chatBot.html',
-			controller: 'ChatbotController'
+		.when('/about',{
+			templateUrl: 'views/about.html',
+			controller: 'AboutController'
 		})
 		.when('/nerds', {
 			templateUrl: 'views/nerd.html',

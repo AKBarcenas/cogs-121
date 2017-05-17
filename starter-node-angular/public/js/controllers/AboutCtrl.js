@@ -1,6 +1,6 @@
-angular.module('ChatbotCtrl', []).controller('ChatbotController', function($scope,$location) {
+angular.module('AboutCtrl', []).controller('AboutController', function($scope,$location) {
 
-	$scope.tagline = 'This is the Chat bot Screen';
+	$scope.tagline = 'This is the About Screen';
 	/*
 	    function below will take our app to another URL/route ie go('/chatBot') takes us
 	    to chat bot page
