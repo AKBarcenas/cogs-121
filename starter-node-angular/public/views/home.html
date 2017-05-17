@@ -69,7 +69,7 @@
 
 
 			<div class="col-md-8 col-md-offset-2 col-sm-12" id="karan">
-                <h3 class="blog-item-title font-alt mb-10" id="chatBot" ><a href="#">Chat with Karan</a></h3>
+                <h3 class="blog-item-title font-alt mb-10" id="chatBot" ><img src="images/karan.png" alt="karan" style="height: 80px;"><a href="#">Chat with Karan</a></h3>
                 <a ng-click="goToMap()" href="" class="animated fadeIn" style="text-align: center; width: 100%; display: block; margin-top: 10px; padding-top: 10px; padding-bottom: 10px; background-color: yellow;">View map</a>
                 
 				<ul class="window" id="messages">
@@ -80,8 +80,14 @@
 				</ul>
 
 				<form style="position: relative; bottom: 0px; margin-top: 20px;">
-					<input type="text" style="width: 70%; padding: 3px 0px 3px 3px;" ng-model="message">
-                    <input type="submit" class="btn btn-mod btn-small btn-round btn-gray mb-10" ng-click='send()' style="width: 30%; padding-top: 7px; padding-bottom: 7px; position: relative; top: 3px;" value="Submit">
+				<div class="row">
+					<div class="col-md-9 col-sm-9 col-xs-9" style="padding-right: 4px;">
+						<input type="text" style="padding: 3px 0px 3px 3px; border: 1px solid #CCCCCC; width: 100%;" ng-model="message">
+                   </div>
+                   <div class="col-md-3 col-sm-3 col-xs-3" style="padding-left: 4px;">
+                		<input type="submit" class="btn btn-mod btn-small btn-round btn-gray mb-10" ng-click='send()' style="padding-top: 6px; padding-bottom: 6px; position: relative; top: -1px; width: 100%;" value="Submit">
+					</div>
+				</div>
 				</form>
 			</div>
         </div>
@@ -109,17 +115,11 @@
 
 
 <!-- Foter -->
-<footer class="page-section bg-gray-lighter footer pb-60">
+<footer class="page-section bg-gray-lighter footer pb-60 pt-80">
     <div class="container">
         
-        <!-- Footer Logo -->
-        <div class="local-scroll mb-30 wow fadeInUp" data-wow-duration="1.5s">
-            <a href="#top"><img src="libs/images/logo-footer.png" width="78" height="36" alt="" /></a>
-        </div>
-        <!-- End Footer Logo -->
-        
         <!-- Social Links -->
-        <div class="footer-social-links mb-110 mb-xs-60">
+        <div class="footer-social-links mb-60 mb-xs-60">
             <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
            
         </div>
