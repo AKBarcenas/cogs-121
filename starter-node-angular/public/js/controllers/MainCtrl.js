@@ -60,9 +60,11 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 		chatSocket.emit("hello");
 		//document.getElementById("submitButton").setAttribute("disabled", true);
 
+		//Generate unix timestamp as unique id
+		var ts = Math.round((new Date()).getTime() / 1000);
+		console.log("Timestamp: " + ts);
 
-
-		$('#messages').append('<li class=\"animated fadeInUp\">' + $scope.message + '</li>');
+		$('#messages').append('<li class=\"animated fadeInUp\" id=\"' + ts + '\">' + $scope.message + '</li>');
 
 		var msg = $scope.message;
 		$scope.message = "";
@@ -113,14 +115,17 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 	                    console.log(response1);
 	                    if(response1.data.hasOwnProperty('name'))  {
 	                    	message = "You should go to a place called " + response1.data.name + ". You can go back to the map for directions. You can also tell me another type of food that you want.";
-		                    $('#messages').append('<li class=\"animated fadeInUp\">' + message + '</li>');
+		                    $('#messages').append('<li class=\"animated fadeInUp\" id=\"' + ts + '\">' + message + '</li>');
 		                    //document.getElementById("submitButton").disabled = false;
 		                    $scope.add(response1.data.coordinates.latitude, response1.data.coordinates.longitude);
+		                    
+		                    var objDiv = document.getElementById("messageWindow");
+							objDiv.scrollTop = objDiv.scrollHeight;
 	                    }
 
 	                    else  {
 	                    	message = "I'm not sure what you are trying to tell me. Let's try finding another food item you want to have.";
-	                    	$('#messages').append('<li class=\"animated fadeInUp\">' + message + '</li>'); 
+	                    	$('#messages').append('<li class=\"animated fadeInUp\" id=\"' + ts + '\">' + message + '</li>'); 
 	                    	//document.getElementById("submitButton").disabled = false;
 	                    }
 	                    $scope.chatDisable=false;
@@ -130,11 +135,19 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 
 	            else  {
                 	message = "I'm not sure what you are trying to tell me. Let's try finding another food item you want to have.";
-                	$('#messages').append('<li class=\"animated fadeInUp\">' + message + '</li>'); 
-
+                	$('#messages').append('<li class=\"animated fadeInUp\" id=\"' + ts + '\">' + message + '</li>'); 
+                	
+					var objDiv = document.getElementById("messageWindow");
+					objDiv.scrollTop = objDiv.scrollHeight;
                 	$scope.chatDisable=false;
 
                 }	
+                
+                
+                
+                var objDiv = document.getElementById("messageWindow");
+				objDiv.scrollTop = objDiv.scrollHeight;
+				
 
 
               },function(){});
