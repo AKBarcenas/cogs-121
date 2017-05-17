@@ -35,13 +35,13 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 		$scope.DestLat=lat;
 	};
 	$scope.refresh = function(){
-		geolocation.getLocation().then(function(locData){
+		navigator.geolocation.getCurrentPosition(function(locData){
 			console.log(locData);
 			gservice.refresh(locData.coords.latitude,locData.coords.longitude );
 			currentLocation.latitude=locData.coords.latitude;
 			currentLocation.longitude=locData.coords.longitude;
 		},function(error){
-
+			console.log(error);
 		},
 		{enableHighAccuracy: true});
 		$scope.markerArray=[];
