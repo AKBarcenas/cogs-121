@@ -30,57 +30,10 @@
                 <!-- Item With Sub -->
                 <li>
                     <a href="#" class="mn-has-sub active">Home</a>
-                    <a href="./chatBot" class="mn" style="margin-left: 10px;">Chatbot</a>                       
+                    <!--<a href="./chatBot" class="mn" style="margin-left: 10px;">Chatbot</a> -->          
                   
                 </li>
-                <!-- End Item With Sub -->
-                
-                <!-- Item With Sub 
-                <li>
-                    <a href="#" class="mn-has-sub">Pages <i class="fa fa-angle-down"></i></a>
-                    
-                    <!-- Sub Multilevel -
-                    <ul class="mn-sub mn-has-multi">
-                        
-                        <li class="mn-sub-multi">
-                            <a class="mn-group-title">Group 1</a>
-                            
-                            <ul>
-                                <li>
-                                    <a href="pages-about-1.html">About Us 1</a>
-                                </li>
-                                <li>
-                                    <a href="pages-about-2.html">About Us 2</a>
-                                </li>
-                                <li>
-                                    <a href="pages-about-3.html">About Us 3</a>
-                                </li>
-                                <li>
-                                    <a href="pages-services-1.html">Services 1</a>
-                                </li>
-                                <li>
-                                    <a href="pages-services-2.html">Services 2</a>
-                                </li>
-                                <li>
-                                    <a href="pages-services-3.html">Services 3</a>
-                                </li>
-                                <li>
-                                    <a href="pages-clients.html">Clients</a>
-                                </li>
-                                <li>
-                                    <a href="pages-landing.html">Landing Page</a>
-                                </li>
-                            </ul>
-                            
-                        </li>
-                        
-                       
-                    </ul>
-                    <!-- End Sub Multilevel -->
-                    
-                </li>
-                <!-- End Item With Sub -->
-              
+
             </ul>
         </div>
         <!-- End Main Menu -->
@@ -90,21 +43,6 @@
 </nav>
 <!-- End Navigation panel -->
 
-<!-- Section 
-<section class="small-section pb-0">
-    
-    <div class="container align-center">
-        
-        <div class="mb-10">
-            <img src="images/logo-footer.png" width="78" height="36" alt="" />
-        </div>
-        
-        <h1 class="magazine-logo-text black font-alt">MapEats</h1>
-        
-    </div>
-    
-</section>
-<!-- End Section -->
 
 
 <!-- Section -->
@@ -126,25 +64,15 @@
                         
                         	<!-- MAP -->
                             <div id="map"></div>
-                            <a href="#chatBot" style="text-align: center; width: 100%; display: block; padding-top: 10px; padding-bottom: 10px; background-color: cyan;">Click to go to ChatBot</a>
-                        
+                            <a ng-click="goToChat()" href="" style="text-align: center; width: 100%; display: block; padding-top: 10px; padding-bottom: 10px; background-color: cyan;">Click to chat wtih Karan</a>
                     </ul>
-                </div>
-                <!-- End Post Slider -->
-          
-                
-                <!-- ************************************ 
-                
-                <div class="align-center mb-70">
-                    <a href="#"><img src="libs/images/banners/banner-720x90.png" alt="" /></a>
-                </div>
-                
-                 ************************************ -->
-                
+                </div> 
 			</div>
-			<div class="col-md-8 col-md-offset-2 col-sm-12">
-                <h3 class="blog-item-title font-alt mb-10" id="chatBot" ><a href="#">ChatBot goes Here</a></h3>
-                <a href="#map" class=" animated fadeIn" style="text-align: center; width: 100%; display: block; margin-top: 10px; padding-top: 10px; padding-bottom: 10px; background-color: yellow;">Click to go to Maps</a>
+
+
+			<div class="col-md-8 col-md-offset-2 col-sm-12" id="karan">
+                <h3 class="blog-item-title font-alt mb-10" id="chatBot" ><img src="images/karan.png" alt="karan" style="height: 80px;"><a href="#">Chat with Karan</a></h3>
+                <a ng-click="goToMap()" href="" class="animated fadeIn" style="text-align: center; width: 100%; display: block; margin-top: 10px; padding-top: 10px; padding-bottom: 10px; background-color: yellow;">View map</a>
                 
 				<ul class="window" id="messages">
 					<li class="animated fadeInUp">
@@ -154,8 +82,16 @@
 				</ul>
 
 				<form style="position: relative; bottom: 0px; margin-top: 20px;">
-					<input ng-disabled= "chatDisable" type="text" style="width: 70%; padding: 3px 0px 3px 3px;" ng-model="message">
-                    <input ng-disabled= "chatDisable" type="submit" class="btn btn-mod btn-small btn-round btn-gray mb-10" ng-click='send()' style="width: 30%; padding-top: 7px; padding-bottom: 7px; position: relative; top: 3px;" value="Submit">
+
+				<div class="row">
+					<div class="col-md-9 col-sm-9 col-xs-9" style="padding-right: 4px;">
+						<input ng-disabled= "chatDisable" type="text" style="padding: 3px 0px 3px 3px; border: 1px solid #CCCCCC; width: 100%;" ng-model="message">
+                   </div>
+                   <div class="col-md-3 col-sm-3 col-xs-3" style="padding-left: 4px;">
+                		<input ng-disabled= "chatDisable" type="submit" class="btn btn-mod btn-small btn-round btn-gray mb-10" ng-click='send()' style="padding-top: 6px; padding-bottom: 6px; position: relative; top: -1px; width: 100%;" value="Submit">
+					</div>
+				</div>
+
 				</form>
 			</div>
         </div>
@@ -187,17 +123,11 @@
 
 
 <!-- Foter -->
-<footer class="page-section bg-gray-lighter footer pb-60">
+<footer class="page-section bg-gray-lighter footer pb-60 pt-80">
     <div class="container">
         
-        <!-- Footer Logo -->
-        <div class="local-scroll mb-30 wow fadeInUp" data-wow-duration="1.5s">
-            <a href="#top"><img src="libs/images/logo-footer.png" width="78" height="36" alt="" /></a>
-        </div>
-        <!-- End Footer Logo -->
-        
         <!-- Social Links -->
-        <div class="footer-social-links mb-110 mb-xs-60">
+        <div class="footer-social-links mb-60 mb-xs-60">
             <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
            
         </div>
