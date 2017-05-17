@@ -1,13 +1,21 @@
-angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('MainController', function($scope,gservice,$location,geolocation,chatSocket,$http) {
-	
+
 				
+angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('MainController', function($scope,gservice,$location,geolocation,chatSocket,$http, $sce) {
+	$scope.$sce = $sce;
+
+	$scope.markerArray=[];
+	$scope.tagline = 'To the moon and back!';
+	$scope.DestLong=-117.242502;
+	$scope.DestLat=32.879227;
+	currentLocation={};
+	$scope.chatDisable=false;
 	$scope.goToMap = function() {
 		var link = "map";
     	var place = document.getElementById(link);
 		place.scrollIntoView();
         window.scrollBy(0, -100);
         return false;
-	}
+	};
 			
 	$scope.goToChat = function() {
 		var link = "karan";
@@ -15,13 +23,7 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
         place.scrollIntoView();
         window.scrollBy(0, -60);
     	return false;
-	}
-				
-	$scope.markerArray=[];
-	$scope.tagline = 'To the moon and back!';
-	$scope.DestLong=-117.242502;
-	$scope.DestLat=32.879227;
-	currentLocation={};
+	};
 	//TODO change this to the user's current location, centered on
 	//gservice.refresh(32.8800604, -117.2340135);32.8696° N, 117.2154° W
 	$scope.add = function(lat,long){
@@ -54,6 +56,7 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 	$scope.send = function() {
 		var userMessage = $scope.message;
 		console.log("Sent: " + $scope.message);
+		$scope.chatDisable=true;
 		chatSocket.emit("hello");
 		document.getElementById("submitButton").setAttribute("disabled", true);
 
@@ -120,6 +123,7 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 	                    	$('#messages').append('<li class=\"animated fadeInUp\">' + message + '</li>'); 
 	                    	document.getElementById("submitButton").disabled = false;
 	                    }
+	                    $scope.chatDisable=false;
 	                // Then initialize the map.
 	                },function(){});
 	            }
@@ -127,17 +131,27 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 	            else  {
                 	message = "I'm not sure what you are trying to tell me. Let's try finding another food item you want to have.";
                 	$('#messages').append('<li class=\"animated fadeInUp\">' + message + '</li>'); 
+<<<<<<< HEAD
                 	document.getElementById("submitButton").disabled = false;
+=======
+                	$scope.chatDisable=false;
+>>>>>>> origin/master
                 }	
 
 
               },function(){});
 
 	};
-
+	$scope.directions=[];
 	$scope.routeTo=function(){
-		gservice.routeTo($scope.DestLat,$scope.DestLong);
+		gservice.routeTo($scope.DestLat,$scope.DestLong).then(function(r){
+			$scope.directions=r;
+		});
 		console.log("ROUTING TO DESTINATION");
+		$scope.print();
+	};
+	$scope.print = function(){
+		console.log($scope.directions);
 	}
 
 
