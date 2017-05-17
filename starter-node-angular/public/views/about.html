@@ -14,7 +14,7 @@
     <div class="container relative clearfix">
         <!-- Logo ( * your text or image into link tag *) -->
         <div class="nav-logo-wrap local-scroll">
-            <a href="mp-index.html" class="logo">
+            <a href="/" class="logo">
                 <h5>MapEats</h5>
                 <!--<img src="images/logo-dark.png" alt="" />-->
             </a>
@@ -51,90 +51,51 @@
 
     <div class="container relative">
 
-    <div class="row">
+    	<div class="row mb-20">
 			<div class="col-md-8 col-md-offset-2 col-sm-12" id="karan">
 				<div class="row">
 					<div class="col-xs-9">
-               			 <h3 class="blog-item-title font-alt mb-10" id="chatBot" ><img src="images/karan.png" alt="karan" style="height: 54px;">Chat with Karan
+               			 <h3 class="blog-item-title font-alt mb-10" id="chatBot" ><img src="images/karan.png" alt="karan" style="height: 54px;">About Mapeats
 
                 		</h3>
                 	</div>
                 	<div class="col-xs-3">
-                		<a ng-click="goToMap()" href="" class="animated fadeIn" style="margin-top: 6px; text-align: center; width: 100%; display: block; padding: 7px 2px 7px 2px; background-color: yellow; font-size: 12px;">View map</a>
+                		<a href="/" class="animated fadeIn" style="margin-top: 6px; text-align: center; width: 100%; display: block; padding: 7px 2px 7px 2px; background-color: yellow; font-size: 12px;">Home</a>
                 	</div>
                 </div>
-
-                <div class="row" id="messageWindow" style="max-height: 380px; overflow-y: scroll;">
-					<ul class="window" id="messages">
-						<li class="animated fadeInUp">
-							Hello! Welcome to MapEats! I'm Karan. How can I help you today?
-						</li>
-                    	<!-- Additional messages are appended -->
-					</ul>
-				</div>
-
-
-				<div class="row">
-					<form style="position: relative; bottom: 0px; margin-top: 20px;">
-						<div class="col-md-9 col-sm-9 col-xs-9" style="padding-right: 4px;">
-							<input ng-disabled= "chatDisable" type="text" style="padding: 3px 0px 3px 3px; border: 1px solid #CCCCCC; width: 100%;" ng-model="message">
-                   		</div>
-                   		<div class="col-md-3 col-sm-3 col-xs-3" style="padding-left: 4px;">
-                			<input ng-disabled= "chatDisable" type="submit" class="btn btn-mod btn-small btn-round btn-gray mb-10" ng-click='send()' style="padding-top: 6px; padding-bottom: 6px; position: relative; top: -1px; width: 100%;" value="Submit">
-						</div>
-					</form>
-				</div>
-
-			</div>
-        </div>
-        
-
-        <div class="row mt-40">
-            <div class="col-sm-12">
-                
-                <!-- Post Slider -->
-                <div class="blog-media mb-20 mb-xs-30">
-                    <ul class="clearlist">
-                        
-                        	<!-- MAP -->
-                            <div id="map"></div>
-                            <a ng-click="goToChat()" href="" style="text-align: center; width: 100%; display: block; padding-top: 10px; padding-bottom: 10px; background-color: cyan;">Click to chat wtih Karan</a>
-                    </ul>
-                </div> 
 			</div>
 		</div>
-
+		
+		
+		
 		<div class="row">
-			<button ng-click="refresh()" class="col-xs-4 btn btn-mod btn-small btn-round btn-gray mb-10" style="padding: 4px 8px;"> REFRESH MAP</button>
-			<button ng-click="routeTo()" class="col-xs-4 btn btn-mod btn-small btn-round btn-gray mb-10" style="padding: 4px 8px;"> ROUTE</button>
-			<button ng-click="print()" class="col-xs-4 btn btn-mod btn-small btn-round btn-gray mb-10" style="padding: 4px 8px;"> Print ROUTE</button>
-		</div>
-
-
-        
-    </div>
-</section>
-<!-- End Section -->
-
-
-<!-- Section -->
-<section class="small-section pt-20">
-    <div class="container relative">
-        
-        <div ng-repeat="direction in directions" class="row">
-            
-            <div class="col-sm-12">
-                <div ng-bind-html="$sce.trustAsHtml(direction.instructions)" id="directions">
-
-                        {{direction.instructions}}
-                    
+			<div class="col-md-8 col-md-offset-2 col-sm-12" id="karan">
+				<div class="row">
+					<div class="col-xs-10">
+               			<h4>What is MapEats?</h4>
+               			<p>
+               				MapEats is a cloud based, integrated bot that unifies synergy between Yelp, Google, Wit.AI, and the user.
+               				<br>
+               				Just type what you want and Karan will find a restaurant for you. 
+               			</p>
+               		</div>
                 </div>
-              
-            </div>
-        </div>
-        
-    </div>
-</section>
+                <div class="row">
+					<div class="col-xs-10">
+               			<h4>What is MapEats?</h4>
+               			<p>
+               				MapEats is a cloud based, integrated bot that unifies synergy between Yelp, Google, Wit.AI, and the user.
+               				<br>
+               				Just type what you want and Karan will find a restaurant for you. 
+               			</p>
+               		</div>
+                </div>
+			</div>
+		</div>
+	</div>
+	
+	
+   
 <!-- End Section -->
 
 
