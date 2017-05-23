@@ -1,4 +1,4 @@
-angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('MainController', function($scope,$compile,gservice,$location,geolocation,chatSocket,$http) {
+angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('MainController', function($scope,$compile,gservice,$location,geolocation,chatSocket,$http,$q) {
 	$scope.markerArray=[];
     $scope.locations = [];
 	$scope.tagline = 'To the moon and back!';
@@ -18,7 +18,7 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 	$scope.refresh = function(){
 		geolocation.getLocation().then(function(locData){
 			//console.log(locData);
-			gservice.refresh(locData.coords.latitude,locData.coords.longitude );
+			gservice.refresh($scope.locations,locData.coords.latitude,locData.coords.longitude);
 			currentLocation.latitude=locData.coords.latitude;
 			currentLocation.longitude=locData.coords.longitude;
 		},function(error){
@@ -31,6 +31,8 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 		currentLocation={};
     };
     $scope.addLocations = function(){
+        var deferred = $q.defer();
+
         var pinesText =  '<p><b>Pines</b>' +
                          '<br><b>Hours:</b> 7 AM - 9 PM' +
                          '<br><b>Type:</b> Dining Hall' +
@@ -144,15 +146,18 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
           }
         ];
 
-        gservice.addMarkers($scope.locations,currentLocation.latitude,currentLocation.longitude);
+        return deferred.promise;
+        //gservice.addMarkers($scope.locations,currentLocation.latitude,currentLocation.longitude);
     };
 /*    
     $scope.addMarkers = function(loc,lat,long){
         gservice.addMarkers(loc,lat,long);
     };
 */
-	$scope.refresh();
-    $scope.addLocations(); 
+	//$scope.refresh();
+    $scope.addLocations().then(function(){
+        $scope.refresh();
+    });
     //gservice.addMarkers($scope.locations,currentLocation.latitude,currentLocation.longitude);
 
 

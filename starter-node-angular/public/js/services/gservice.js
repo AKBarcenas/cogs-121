@@ -22,10 +22,8 @@ angular.module('gservice', [])
         // Functions
         // --------------------------------------------------------------
         // Refresh the Map with new data. Function will take new latitude and longitude coordinates.
-        googleMapService.refresh = function(latitude, longitude){
+        googleMapService.refresh = function(locations, latitude, longitude){
             bigMap=null;
-            // Array of locations obtained from API calls
-            locations = [];
 
             // Selected Location (initialize to center of America)
             selectedLat = 39.50;
@@ -35,13 +33,11 @@ angular.module('gservice', [])
                 draggable: true
             });
             directionsService = new google.maps.DirectionsService();
-            // Clears the holding array of locations
-            locations = [];
 
             // Set the selected lat and long equal to the ones provided on the refresh() call
             selectedLat = latitude;
             selectedLong = longitude;
-            initialize(latitude, longitude);
+            initialize(locations, latitude, longitude);
             // Perform an AJAX call to get all of the records in the db.
 
             //TODO this will be our record of restaurants
@@ -51,13 +47,13 @@ angular.module('gservice', [])
                 //locations = convertToMapPoints(response);
 
                 // Then initialize the map.
-                initialize(latitude, longitude);
+                initialize(locations, latitude, longitude);
             },function(){});
         };
 
 
     // Initializes the map
-    var initialize = function(latitude, longitude) {
+    var initialize = function(locations, latitude, longitude) {
     	
         // Uses the selected lat, long as starting point
         var myLatLng = {lat: selectedLat, lng: selectedLong};
@@ -73,7 +69,8 @@ angular.module('gservice', [])
             });
             mapHolder = map;
         }
-        directionsDisplay.setMap(map);
+        directionsDisplay.setMap(mapHolder);
+        addMarkers(locations, latitude, longitude);
         
         /*
         var pinesText =  '<p><b>Pines</b>' +
@@ -244,15 +241,17 @@ angular.module('gservice', [])
 
     };
 
-    googleMapService.addMarkers = function(locations, latitude, longitude) {
+    var addMarkers = function(locations, latitude, longitude) {
         // Loop through each location in the array and place a marker
         locations.forEach(function(n, i){
             var marker = new google.maps.Marker({
                 position: n.latlon,
                 setMap: mapHolder,
                 title: "Big Map",
-                icon: "http://maps.google.com/mapfiles/ms/icons/restaurant.png",
+                icon: "http://maps.google.com/mapfiles/ms/icons/restaurant.png"
             });
+
+            console.log("added marker");
 
             // For each marker created, add a listener that checks for clicks
             google.maps.event.addListener(marker, 'click', function(e){
@@ -262,7 +261,7 @@ angular.module('gservice', [])
                 n.message.open(mapHolder, marker);
             });
 
-            console.log("ALSDKJALSKDJALJ");
+            console.log("added listener");
         });
 
         // Set initial location as a bouncing red marker
@@ -324,8 +323,8 @@ angular.module('gservice', [])
         });
     };
     // Refresh the page upon window load. Use the initial latitude and longitude
-    //google.maps.event.addDomListener(window, 'load',
-       // googleMapService.refresh(selectedLat, selectedLong));
+    google.maps.event.addDomListener(window, 'load',
+        googleMapService.refresh([], selectedLat, selectedLong));
 
     return googleMapService;
 });
