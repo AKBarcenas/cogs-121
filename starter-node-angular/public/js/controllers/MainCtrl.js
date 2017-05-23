@@ -17,7 +17,7 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 	};
 	$scope.refresh = function(){
 		geolocation.getLocation().then(function(locData){
-			console.log(locData);
+			//console.log(locData);
 			gservice.refresh(locData.coords.latitude,locData.coords.longitude );
 			currentLocation.latitude=locData.coords.latitude;
 			currentLocation.longitude=locData.coords.longitude;
@@ -36,7 +36,7 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
                          '<br><b>Type:</b> Dining Hall' +
                          '<br>***PICTURES GO HERE***' +
                          '<br>***REVIEWS GO HERE***' +
-                         '<br><button ng-app="MainCtrl" ng-controller="MainController" ng-click="testPrint()">Go Here!</button>' +
+                         '<br><button ng-click="testPrint()">Go Here!</button>' +
                          '</p>';
         var compiled = $compile(pinesText);
         compiled($scope);
@@ -143,42 +143,17 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
              })
           }
         ];
+
+        gservice.addMarkers($scope.locations,currentLocation.latitude,currentLocation.longitude);
     };
-    $scope.addMarkers = function(){
-        // Loop through each location in the array and place a marker
-        $scope.locations.forEach(function(n, i){
-            var marker = new google.maps.Marker({
-                position: n.latlon,
-                map: map,
-                title: "Big Map",
-                icon: "http://maps.google.com/mapfiles/ms/icons/restaurant.png",
-            });
-
-            // For each marker created, add a listener that checks for clicks
-            google.maps.event.addListener(marker, 'click', function(e){
-                console.log(e);
-                // When clicked, open the selected marker's message
-                currentSelectedMarker = n;
-                n.message.open(map, marker);
-            });
-        });
-
-        // Set initial location as a bouncing red marker
-        var initialLocation = new google.maps.LatLng(latitude, longitude);
-        var marker = new google.maps.Marker({
-            position: initialLocation,
-            //animation: google.maps.Animation.BOUNCE,
-            map: map,
-            icon: 'http://maps.google.com/mapfiles/arrow.png'
-        });
-        lastMarker = marker;
-        bigMap=map;
-        initLoc=initialLocation;
+/*    
+    $scope.addMarkers = function(loc,lat,long){
+        gservice.addMarkers(loc,lat,long);
     };
-
+*/
 	$scope.refresh();
-    $scope.addLocations();
-    $scope.addMarkers();
+    $scope.addLocations(); 
+    //gservice.addMarkers($scope.locations,currentLocation.latitude,currentLocation.longitude);
 
 
 	$scope.message="";

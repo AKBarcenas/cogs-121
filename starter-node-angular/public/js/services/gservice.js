@@ -6,6 +6,7 @@ angular.module('gservice', [])
         // -------------------------------------------------------------
         // Service our factory will return
         var googleMapService = {};
+        var mapHolder;
         var bigMap;
         // Array of locations obtained from API calls
         var locations = [];
@@ -70,6 +71,7 @@ angular.module('gservice', [])
                 zoom: 15,
                 center: myLatLng
             });
+            mapHolder = map;
         }
         directionsDisplay.setMap(map);
         
@@ -241,7 +243,42 @@ angular.module('gservice', [])
         */
 
     };
-    googleMapService.createMarker= function(latitude, longitude,MarkerArray){
+
+    googleMapService.addMarkers = function(locations, latitude, longitude) {
+        // Loop through each location in the array and place a marker
+        locations.forEach(function(n, i){
+            var marker = new google.maps.Marker({
+                position: n.latlon,
+                setMap: mapHolder,
+                title: "Big Map",
+                icon: "http://maps.google.com/mapfiles/ms/icons/restaurant.png",
+            });
+
+            // For each marker created, add a listener that checks for clicks
+            google.maps.event.addListener(marker, 'click', function(e){
+                console.log(e);
+                // When clicked, open the selected marker's message
+                currentSelectedMarker = n;
+                n.message.open(mapHolder, marker);
+            });
+
+            console.log("ALSDKJALSKDJALJ");
+        });
+
+        // Set initial location as a bouncing red marker
+        var initialLocation = new google.maps.LatLng(latitude, longitude);
+        var marker = new google.maps.Marker({
+            position: initialLocation,
+            //animation: google.maps.Animation.BOUNCE,
+            setMap: mapHolder,
+            icon: 'http://maps.google.com/mapfiles/arrow.png'
+        });
+        lastMarker = marker;
+        bigMap=mapHolder;
+        initLoc=initialLocation;
+    };
+
+    googleMapService.createMarker= function(latitude,longitude,MarkerArray){
         var myLatLng = {lat: selectedLat, lng: selectedLong};
         if (!bigMap){
             console.log("NO MAP FOUND");
@@ -287,8 +324,8 @@ angular.module('gservice', [])
         });
     };
     // Refresh the page upon window load. Use the initial latitude and longitude
-    google.maps.event.addDomListener(window, 'load',
-        googleMapService.refresh(selectedLat, selectedLong));
+    //google.maps.event.addDomListener(window, 'load',
+       // googleMapService.refresh(selectedLat, selectedLong));
 
     return googleMapService;
 });
