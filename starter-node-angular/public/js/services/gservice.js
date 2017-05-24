@@ -1,6 +1,6 @@
 // Creates the gservice factory. This will be the primary means by which we interact with Google Maps
 angular.module('gservice', [])
-    .factory('gservice', function($http){
+    .factory('gservice', function($http,$rootScope){
 
         // Initialize Variables
         // -------------------------------------------------------------
@@ -261,7 +261,7 @@ angular.module('gservice', [])
                 n.message.open(mapHolder, marker);
             });
 
-            console.log("added listener");
+            //console.log("added listener");
         });
 
         // Set initial location as a bouncing red marker
@@ -323,8 +323,11 @@ angular.module('gservice', [])
         });
     };
     // Refresh the page upon window load. Use the initial latitude and longitude
+    //google.maps.event.addDomListener(window, 'load',
+      //  googleMapService.refresh([], selectedLat, selectedLong));
+
     google.maps.event.addDomListener(window, 'load',
-        googleMapService.refresh([], selectedLat, selectedLong));
+        $rootScope.$broadcast('initMap'));
 
     return googleMapService;
 });

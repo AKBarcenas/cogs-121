@@ -156,14 +156,21 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
     };
 */
 	//$scope.refresh();
-    console.log("entering promise");
-    $scope.addLocations().then(function(msg){
+    /*$scope.addLocations().then(function(msg){
+        console.log("entering promise");
         console.log(msg);
         $scope.refresh();
-    });
+    });*/
 
     //gservice.addMarkers($scope.locations,currentLocation.latitude,currentLocation.longitude);
 
+    $scope.$on('initMap', function(event){
+        $scope.addLocations().then(function(msg){
+            console.log("entering promise");
+            console.log(msg);
+            $scope.refresh();
+        });
+    });
 
 	$scope.message="";
 	$scope.send = function() {
