@@ -1,3 +1,9 @@
+<script>
+if (document.location.protocol != "https:") {
+	window.location = "https://cogs-121-sp17.herokuapp.com";
+}
+</script>
+
 <!-- Page Wrap -->
 <div class="page" id="top">
 
@@ -54,7 +60,7 @@
                 		</h3>
                 	</div>
                 	<div class="col-xs-3">
-                		<a ng-click="goToMap()" href="" class="animated fadeIn" style="margin-top: 6px; text-align: center; width: 100%; display: block; padding: 7px 2px 7px 2px; background-color: yellow; font-size: 12px;">View map</a>
+                		<a ng-click="goToMap()" href="" class="animated fadeIn"><img src="images/map.png" alt="map" style="width: 36px; float: right;"></a>
                 	</div>
                 </div>
 
