@@ -71,7 +71,9 @@ angular.module('gservice', [])
             var map = new google.maps.Map(document.getElementById('map'), {
                 //TODO change based on restaurant locality to user
                 zoom: 15,
-                center: myLatLng
+                center: myLatLng,
+                scrollwheel: false,
+                draggable: false
             });
         }
         directionsDisplay.setMap(map);
