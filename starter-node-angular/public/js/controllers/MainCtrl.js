@@ -66,6 +66,9 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 
 		$('#messages').append('<li class=\"animated fadeInUp\" id=\"' + ts + '\">' + $scope.message + '</li>');
 
+		var removeTS = ts+999;
+		$('#messages').append('<li class=\"animated fadeInUp\" id=\"' + removeTS + '\"> <img src="images/typing.gif" width="50px" alt="loading"> </li>');
+
 		var msg = $scope.message;
 		$scope.message = "";
  
@@ -109,11 +112,16 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 	                }
 	 
 	 				console.log("here");
+
+	 				//Remove loading animation 
+
+
 	                // Perform an AJAX call to get all of the records in the db.
 	                //TODO this will be our record of restaurants
 	                $http(req).then(function(response1){
 	                    console.log(response1);
 	                    if(response1.data.hasOwnProperty('name'))  {
+	                    	document.getElementById(removeTS).remove();
 	                    	message = "You should go to a place called " + response1.data.name + ". You can go back to the map for directions. You can also tell me another type of food that you want.";
 		                    $('#messages').append('<li class=\"animated fadeInUp\" id=\"' + ts + '\">' + message + '</li>');
 		                    //document.getElementById("submitButton").disabled = false;
@@ -128,6 +136,7 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 	                    }
 
 	                    else  {
+	                    	document.getElementById(removeTS).remove();
 	                    	message = "I'm not sure what you are trying to tell me. Let's try finding another food item you want to have.";
 	                    	$('#messages').append('<li class=\"animated fadeInUp\" id=\"' + ts + '\">' + message + '</li>'); 
 	                    	//document.getElementById("submitButton").disabled = false;
@@ -138,6 +147,7 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 	            }
 
 	            else  {
+	            	document.getElementById(removeTS).remove();
                 	message = "I'm not sure what you are trying to tell me. Let's try finding another food item you want to have.";
                 	$('#messages').append('<li class=\"animated fadeInUp\" id=\"' + ts + '\">' + message + '</li>'); 
                 	
