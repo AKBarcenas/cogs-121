@@ -3,34 +3,40 @@
 ### Group Member Contributions
 Alex Barcenas:
   - Improved the bot's word recognition of food items.
+  - Worked on markdown file.
  
 Albert Lin:
-  - adf
-  - adf
+  - Added loading animations to indicate to user that chatbot is working.
+  - Added UI updates and refinements.
 
 Sanjeev Reddy:
   - Made the map unclickable by the user to avoid messing with the direction markers.
   - Removed the fake data points added at the beginning of the project.
+  - Added functionality to open directions in Google Maps.
+  - Made UI refinements.
 
 Todd Tang:
   - Attempted to resolve info window issues for displaying retaurant information.
   
-### Screenshots
+### Completed Features
+#### Chatbot
+Our chatbot, Karan, understands various user commands and responds to different types of food requests with appropriate responses.
 
-Fake data removal: There was fake data populating the UCSD region of our map. However, we opted for just using one place that will be displayed based on the chat results. This decision was made due to some feedback we got and some complications we had with implementing multiple locations.
+![Chatbot](./screenshots/final_chat.png "Chatbot view")
 
+#### Map with directions
+We have integrated our map with Karan's responses. It automatically gives the user a quick view of directions to the restaurant Karan suggested. We also display written directions beneath the map for the user's convenience.
 
-Map with fake data:
-![Fake data](./screenshots/fakeData.png "About/tutorial view")
+![Map](./screenshots/final_map.png "Map view")
+![Directions](./screenshots/final_directions.png "Directions view")
 
-Map with no fake data:
-![Current map](./screenshots/noFakeData.png "About/tutorial view")
+#### Open directions in Google Maps
+By clicking on the "Open Directions in Google Maps" button, the user can get more detailed directions to the restaurant suggested by Karan. This is especially useful for people who want the convenience of Google's GPS functionality.
 
-View Map Button: These screenshots shows the change made to the view map button that was suggested by the TA in order to stray away from just using text.
+![Google Maps](./screenshots/final_google.png "Google Maps view")
 
+#### About page/tutorial
+MapEats has an "About/tutorial" page that provides the user with introductory information regarding our application and how to use it. Note that the user is prompted by Karan to visit this page if they are unsure of how to use MapEats (see chatbot screenshots).
 
-Old view map button:
-![Old Map Button](./screenshots/oldViewMap.png "Map buttons view")
-
-New view map button:
-![New Map Button](./screenshots/newViewMap.png "Map buttons view")
+![About](./screenshots/final_about1.png "About/tutorial view")
+![About](./screenshots/final_about2.png "About/tutorial view")
