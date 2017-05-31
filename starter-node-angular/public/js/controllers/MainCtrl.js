@@ -133,6 +133,10 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 							
 							gservice.routeTo($scope.DestLat,$scope.DestLong).then(function(r){
 								$scope.directions=r;
+                                var link = document.getElementById('openMaps');
+                                var destLoc = response1.data.id;
+                                link.setAttribute("href", "https://www.google.com/maps/dir/?api=1&destination=" + destLoc + "&travelmode=driving");
+                                console.log("href set");
 							});
 	                    }
 
@@ -166,15 +170,14 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 	$scope.routeTo=function(){
 		gservice.routeTo($scope.DestLat,$scope.DestLong).then(function(r){
 			$scope.directions=r;
-		});
+        });
 		console.log("ROUTING TO DESTINATION");
 		$scope.print();
 	};
-	$scope.print = function(){
+
+    $scope.print = function(){
 		console.log("Scope print");
 		console.log($scope.directions);
 	}
-
-
 
 });
