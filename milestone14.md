@@ -13,8 +13,7 @@ Sanjeev Reddy:
   - Removed the fake data points added at the beginning of the project.
 
 Todd Tang:
-  - adf
-  - adf
+  - Attempted to resolve info window issues for displaying retaurant information.
   
 ### Screenshots
 
