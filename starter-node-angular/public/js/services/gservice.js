@@ -281,6 +281,7 @@ angular.module('gservice', [])
             destination: dest,
             travelMode: google.maps.TravelMode.DRIVING
         };
+
         var deferred = $q.defer();
         directionsService.route(request, function (response, status) {
             if (status == google.maps.DirectionsStatus.OK) {

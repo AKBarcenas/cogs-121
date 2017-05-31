@@ -122,8 +122,9 @@ angular.module('MainCtrl', ['gservice','geolocation','chatSocket']).controller('
 	                    console.log(response1);
 	                    if(response1.data.hasOwnProperty('name'))  {
 	                    	document.getElementById(removeTS).remove();
-	                    	message = "You should go to a place called " + response1.data.name + ". You can go back to the map for directions. You can also tell me another type of food that you want.";
-		                    $('#messages').append('<li class=\"animated fadeInUp\" id=\"' + ts + '\">' + message + '</li>');
+	                    	message1 = "You should go to a place called ";
+                            message2 = ". You can go back to the map for directions. You can also tell me another type of food that you want.";
+		                    $('#messages').append('<li class=\"animated fadeInUp\" id=\"' + ts + '\">' + message1 + '<b>' + response1.data.name + '</b>' + message2 + '</li>');
 		                    //document.getElementById("submitButton").disabled = false;
 		                    $scope.add(response1.data.coordinates.latitude, response1.data.coordinates.longitude);
 		                    
