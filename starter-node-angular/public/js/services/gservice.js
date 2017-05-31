@@ -78,6 +78,7 @@ angular.module('gservice', [])
         }
         directionsDisplay.setMap(map);
 
+        /*
         // temp pre-populated restaurants for milestone 5
         // TODO remove this
         var temp_restaurants = [
@@ -205,6 +206,7 @@ angular.module('gservice', [])
                 n.message.open(map, marker);
             });
         });
+        */
 
         // Loop through each location in the array and place a marker
         locations.forEach(function(n, i){
@@ -224,8 +226,10 @@ angular.module('gservice', [])
             });
         });
 
+        
         // Set initial location as a bouncing red marker
         var initialLocation = new google.maps.LatLng(latitude, longitude);
+        /*
         var marker = new google.maps.Marker({
             position: initialLocation,
             //animation: google.maps.Animation.BOUNCE,
@@ -233,8 +237,10 @@ angular.module('gservice', [])
             icon: 'http://maps.google.com/mapfiles/arrow.png'
         });
         lastMarker = marker;
+        */
         bigMap=map;
         initLoc=initialLocation;
+        
 
     };
     googleMapService.createMarker= function(latitude, longitude,MarkerArray){
