@@ -1,3 +1,9 @@
+<script>
+if (document.location.protocol != "https:") {
+	window.location = "https://cogs-121-sp17.herokuapp.com";
+}
+</script>
+
 <!-- Page Wrap -->
 <div class="page" id="top">
 
@@ -54,14 +60,14 @@
                 		</h3>
                 	</div>
                 	<div class="col-xs-3">
-                		<a ng-click="goToMap()" href="" class="animated fadeIn" style="margin-top: 6px; text-align: center; width: 100%; display: block; padding: 7px 2px 7px 2px; background-color: yellow; font-size: 12px;">View map</a>
+                		<a ng-click="goToMap()" href="" class="animated fadeIn"><img src="images/map.png" alt="map" style="width: 36px; float: right;"></a>
                 	</div>
                 </div>
 
-                <div class="row" id="messageWindow" style="max-height: 380px; overflow-y: scroll;">
+                <div class="row" id="messageWindow" style="max-height: 360px; overflow-y: scroll;">
 					<ul class="window" id="messages">
 						<li class="animated fadeInUp">
-							Hello! Welcome to MapEats! I'm Karan. How can I help you today?
+							Hi! I'm Karan! Let me know what you're craving. If you need help, check out the <a href="/about">About</a> page or go straight to the <a ng-click="goToMap()" href="">map</a>.
 						</li>
                     	<!-- Additional messages are appended -->
 					</ul>
@@ -111,6 +117,8 @@
 <!-- End Section -->
 
 
+
+
 <!-- Section -->
 <section class="small-section pt-20">
     <div class="container relative">
@@ -131,31 +139,19 @@
 </section>
 <!-- End Section -->
 
-
 <!-- Foter -->
-<footer class="page-section bg-gray-lighter footer pb-60 pt-80">
+<footer class="page-section bg-gray-lighter footer pb-20 pt-30">
     <div class="container">
-        
-        <!-- Social Links -->
-        <div class="footer-social-links mb-60 mb-xs-60">
-            <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
-           
-        </div>
-        <!-- End Social Links -->  
-        
         <!-- Footer Text -->
         <div class="footer-text">
-            
             <!-- Copyright -->
             <div class="footer-copy font-alt">
-                &copy; MapEats
+                &copy; 2017 MapEats <br>
+                Created by Alex Barcenas, Albert Lin, Sanjeev Reddy, Todd Tang
             </div>
             <!-- End Copyright -->
-            
-           
         </div>
         <!-- End Footer Text --> 
-        
      </div>        
 </footer>
 <!-- End Foter -->
